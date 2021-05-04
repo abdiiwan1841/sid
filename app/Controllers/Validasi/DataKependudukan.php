@@ -11,15 +11,15 @@ class DataKependudukan extends BaseController
 		$data = [
 			'title' => 'Data Kependudukan'
 		];
-		return view('validasi/data-kependudukan/index', $data);
+		return view('validasi/index', $data);
 	}
-	
+
 	public function show($id = null)
 	{
 		$data = [
 			'title' => 'Data Kependudukan'
 		];
-		return view('validasi/data-kependudukan/show', $data);
+		return view('validasi/show', $data);
 	}
 
 	public function new()
@@ -28,7 +28,7 @@ class DataKependudukan extends BaseController
 			'title' => 'Tambah Data Kependudukan',
 			'validation' => $this->validation,
 		];
-		return view('validasi/data-kependudukan/new', $data);
+		return view('validasi/new', $data);
 	}
 
 	public function create()
@@ -48,7 +48,7 @@ class DataKependudukan extends BaseController
 			'validation' => $this->validation,
 			// 'dokumen' => $this->dataKependudukan->find($id),
 		];
-		return view('validasi/data-kependudukan/edit', $data);
+		return view('validasi/edit', $data);
 	}
 
 	public function update($id = null)

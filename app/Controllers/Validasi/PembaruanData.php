@@ -9,7 +9,7 @@ class PembaruanData extends BaseController
 	public function index()
 	{
 		$data = [
-			'title' => 'Data Pembaruan'
+			'title' => 'Pembaruan Data'
 		];
 		return view('validasi/pembaruan-data/index', $data);
 	}
@@ -17,7 +17,7 @@ class PembaruanData extends BaseController
 	public function show($id = null)
 	{
 		$data = [
-			'title' => 'Data Pembaruan'
+			'title' => 'Pembaruan Data'
 		];
 		return view('validasi/pembaruan-data/show', $data);
 	}
@@ -25,7 +25,7 @@ class PembaruanData extends BaseController
 	public function new()
 	{
 		$data = [
-			'title' => 'Tambah Data Pembaruan',
+			'title' => 'Tambah Pembaruan Data',
 			'validation' => $this->validation,
 		];
 		return view('validasi/pembaruan-data/new', $data);
@@ -38,13 +38,13 @@ class PembaruanData extends BaseController
 		// }
 		// $data = $this->request->getPost();
 		// $this->pembaruanData->save($data);
-		return redirect()->to(route_to('validasi_pembaruan_data'))->with('berhasil', 'Data Pembaruan berhasil ditambah!');
+		return redirect()->to(route_to('validasi_pembaruan_data'))->with('berhasil', 'Pembaruan Data berhasil ditambah!');
 	}
 
 	public function edit($id = null)
 	{
 		$data = [
-			'title' => 'Ubah Data Pembaruan',
+			'title' => 'Ubah Pembaruan Data',
 			'validation' => $this->validation,
 			// 'dokumen' => $this->pembaruanData->find($id),
 		];
@@ -58,13 +58,13 @@ class PembaruanData extends BaseController
 		// }
 		// $data = $this->request->getPost();
 		// $this->pembaruanData->save($data);
-		return redirect()->to(route_to('validasi_pembaruan_data'))->with('berhasil', 'Data Pembaruan berhasil diubah!');
+		return redirect()->to(route_to('validasi_pembaruan_data'))->with('berhasil', 'Pembaruan Data berhasil diubah!');
 	}
 
 	public function delete($id = null)
 	{
 		// $this->pembaruanData->delete($id);
-		return redirect()->to(route_to('validasi_pembaruan_data'))->with('berhasil', 'Data Pembaruan berhasil dihapus!');
+		return redirect()->to(route_to('validasi_pembaruan_data'))->with('berhasil', 'Pembaruan Data berhasil dihapus!');
 	}
 }
 

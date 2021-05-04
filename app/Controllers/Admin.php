@@ -7,13 +7,9 @@ class Admin extends BaseController
 	public function index()
 	{
 		$data = [
-			'title' => 'Dashboard',
-			'users' => $this->user->getUsers(),
-			'supervisor' => $this->user->getGroupUsers(2),
-			'operator' => $this->user->getGroupUsers(3),
-			'keluarga' => $this->user->getGroupUsers(3),
-			'penduduk' => $this->user->getGroupUsers(3),
+			'title' => 'Menu Management',
+			'menu' => $this->menu->where('menu !=', 'menu management')->where('menu !=', 'role management')->orderBy('id', 'desc')->findAll(),
 		];
-		return view('admin/index', $data);
+		return view('menu/index', $data);
 	}
 }
