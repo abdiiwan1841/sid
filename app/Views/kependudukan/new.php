@@ -30,14 +30,14 @@
                 <input type="text" name="nama_lengkap" class="form-control" placeholder="Nama lengkap penduduk" value="<?= old('nama_lengkap'); ?>" />
               </div>
               <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
-                <label>Keluarga dari :</label>
-                <select class="form-control" name="keluarga_id">
-                  <option value="" selected disabled>Pilih keluarga</option>
-                  <?php foreach ($keluarga as $k) : ?>
-                    <option value="<?= $k->id; ?>"><?= $k->nama; ?></option>
-                  <?php endforeach; ?>
-                </select>
-              </div>
+								<label>Keluarga dari:</label>
+								<select class="form-control select2" id="kt_select2_4" name="keluarga_id">
+                <?php foreach ($keluarga as $k) : ?>
+                  <option selected disabled>Pilih Nomor KK</option>
+                  <option value="<?= $k->id; ?>"><?= $k->no_kk; ?></option>
+                <?php endforeach; ?>
+								</select>
+							</div>
               <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
                 <label>Hubungan keluarga</label>
                 <input type="text" name="hubungan_keluarga" class="form-control" placeholder="eq: Anak Kandung, Kepala Keluarga" value="<?= old('hubungan_keluarga'); ?>" />

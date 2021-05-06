@@ -54,7 +54,7 @@ class BaseController extends Controller
 		$this->userAccessMenu = new \App\Models\Menu\UserAccessMenu;
 		$this->group = new \Myth\Auth\Authorization\GroupModel;
 		// Kependudukan Model
-		$this->kependudukan = new \App\Models\kependudukan\kependudukan;
+		$this->kependudukan = new \App\Models\Kependudukan\Kependudukan;
 		$this->keluarga = new \App\Models\kependudukan\Keluarga;
 		$this->dokumenKependudukan = new \App\Models\kependudukan\DokumenKependudukan;
 		$this->dataPeristiwa = new \App\Models\kependudukan\DataPeristiwa;

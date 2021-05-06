@@ -20,7 +20,7 @@ class Kependudukan extends BaseController
     $data = [
       'title' => 'Tambah Penduduk',
       'validation' => $this->validation,
-      'keluarga' => $this->keluargaModel->findAll(),
+      'keluarga' => $this->keluarga->findAll(),
     ];
     return view('kependudukan/new', $data);
   }
@@ -41,7 +41,7 @@ class Kependudukan extends BaseController
       'title' => 'Ubah Data Penduduk',
       'validation' => $this->validation,
       'penduduk' => $this->kependudukan->find($id),
-      'keluarga' => $this->keluargaModel->findAll(),
+      'keluarga' => $this->keluarga->findAll(),
     ];
     return view('kependudukan/edit', $data);
   }

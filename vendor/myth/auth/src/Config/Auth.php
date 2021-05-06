@@ -31,7 +31,7 @@ class Auth extends BaseConfig
     public $views = [
         //'login' => 'Myth\Auth\Views\login',
         //'register' => 'Myth\Auth\Views\register',
-        'login' => '\App\Views\Auth\login',
+        'login' => '\App\Views\auth\login',
         'register' => '\App\Views\Auth\register',
         'forgot' => 'Myth\Auth\Views\forgot',
         'reset' => 'Myth\Auth\Views\reset',
@@ -222,8 +222,8 @@ class Auth extends BaseConfig
     //
     public $passwordValidators = [
         'Myth\Auth\Authentication\Passwords\CompositionValidator',
-        'Myth\Auth\Authentication\Passwords\NothingPersonalValidator',
-        'Myth\Auth\Authentication\Passwords\DictionaryValidator',
+        //'Myth\Auth\Authentication\Passwords\NothingPersonalValidator',
+        //'Myth\Auth\Authentication\Passwords\DictionaryValidator',
         //'Myth\Auth\Authentication\Passwords\PwnedValidator',
     ];
 
