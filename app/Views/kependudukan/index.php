@@ -119,7 +119,7 @@
                       </form>
                     </div>
                   </td>
-                  <td><img src="/assets/media/users/<?= esc($p->foto); ?>" alt="<?= esc($p->foto); ?>" class="rounded" width="60" height="60"></td>
+                  <td><img src="/img/penduduk/<?= esc($p->foto); ?>" alt="<?= esc($p->foto); ?>" class="rounded" width="60" height="60"></td>
                   <td><?= esc($p->nama_lengkap); ?></td>
                   <td><?= esc($p->no_nik); ?></td>
                   <td><?= esc($p->tanggal_lahir); ?></td>

@@ -184,10 +184,11 @@
 	<script src="<?= base_url(); ?>/assets/js/pages/crud/forms/validation/form-widgets.js"></script>
 	<script src="<?= base_url(); ?>/assets/js/pages/crud/forms/widgets/select2.js"></script>
 	<script src="<?= base_url(); ?>/assets/js/pages/crud/forms/widgets/bootstrap-datepicker.js"></script>
-	<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+	<script src="/assets/plugins/custom/datatables/datatables.bundle.js"></script>
 	<!--end::Page Vendors-->
 	<!--begin::Page Scripts(used by this page)-->
-	<script src="assets/js/pages/crud/datatables/data-sources/ajax-client-side.js"></script>
+	<script src="/assets/js/pages/crud/file-upload/image-input.js"></script>
+	<script src="/assets/js/pages/crud/datatables/data-sources/ajax-client-side.js"></script>
 	<!--end::Page Scripts-->
 </body>
 <!--end::Body-->

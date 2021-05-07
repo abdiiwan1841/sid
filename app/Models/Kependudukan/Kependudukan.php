@@ -8,7 +8,7 @@ class kependudukan extends Model
 {
   protected $table = 'penduduk';
   protected $primaryKey = 'id';
-	protected $useTimestamps = true;
+	protected $useTimestamps = false;
   protected $returnType = 'object';
   protected $validationRules = [
     // 'keluarga_id' => [
@@ -17,7 +17,7 @@ class kependudukan extends Model
     //     'required' => 'Keluarga harus diisi',
     //   ],
     // ],
-    // 'foto' => 'uploaded',
+    //'foto' => 'is_image[foto]|mime_in[foto,image/png,image/jpg,image/jpeg]|ext_in[foto,png,jpg,jpeg]',
     'nama_lengkap' => [
       'rules'  => 'required|string',
       'errors' => [
@@ -66,6 +66,7 @@ class kependudukan extends Model
   [
     'keluarga_id',
     'nama_lengkap',
+    'foto',
     'no_nik',
     'nama_ayah',
     'nama_ibu',

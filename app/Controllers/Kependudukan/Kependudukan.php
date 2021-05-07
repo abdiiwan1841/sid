@@ -20,6 +20,7 @@ class Kependudukan extends BaseController
     $data = [
       'title' => 'Tambah Penduduk',
       'validation' => $this->validation,
+      'penduduk' => $this->kependudukan,
       'keluarga' => $this->keluarga->findAll(),
     ];
     return view('kependudukan/new', $data);
@@ -28,10 +29,17 @@ class Kependudukan extends BaseController
   public function create()
   {
     if (!$this->validate($this->kependudukan->getValidationRules())) {
-      return redirect()->to('/kependudukan/new')->withInput();
+      return redirect()->back()->withInput();
     }
+    $foto = $this->request->getFile('foto');
     $data = $this->request->getPost();
-    $this->kependudukan->save($data);
+    if ($foto->getError() !== 4) {
+      $data['foto'] = $foto->getName();
+      $this->kependudukan->save($data);
+      $foto->move('img/penduduk');
+    } else {
+      $this->kependudukan->save($data);
+    }
     return redirect()->to('/kependudukan')->with('berhasil', 'Penduduk berhasil ditambah!');
   }
 
@@ -45,13 +53,17 @@ class Kependudukan extends BaseController
     ];
     return view('kependudukan/edit', $data);
   }
+  
   public function update($id)
   {
-    if (!$this->validate($this->kependudukan->getValidationRules())) {
-      return redirect()->to('/kependudukan/' . $id . '/edit')->withInput();
-    }
     $data = $this->request->getPost();
+    if (!$this->validate($this->kependudukan->getValidationRules())) {
+      return redirect()->back()->withInput();
+    }
+    dd($foto = $this->request->getFile('foto'));
+    
     $this->kependudukan->save($data);
+    
     return redirect()->to('/kependudukan')->with('berhasil', 'Penduduk berhasil diubah!');
   }
 
