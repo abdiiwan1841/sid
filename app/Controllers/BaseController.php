@@ -106,6 +106,5 @@ class BaseController extends Controller
 		$this->statistikAdministrasi = new \App\Models\Statistik\Administrasi;
 		$this->statistikSaranaPrasarana = new \App\Models\Statistik\SaranaPrasarana;
 		$this->statistikApbdDesa = new \App\Models\Statistik\ApbdDesa;
-		
 	}
 }

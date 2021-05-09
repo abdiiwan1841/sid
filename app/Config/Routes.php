@@ -91,7 +91,7 @@ $routes->group('profil-wilayah', ['namespace' => '\App\Controllers\ProfilWilayah
 // KEPENDUDUKAN
 $routes->group('kependudukan', ['namespace' => '\App\Controllers\Kependudukan', 'filter' => 'role:supervisor,admin'], function ($routes) {
 	$routes->get('', 'Kependudukan::index', ['as' => 'kependudukan']);
-	$routes->put('', 'Kependudukan::update', ['as' => 'kependudukan_update']);
+	$routes->put('(:num)', 'Kependudukan::update/$1', ['as' => 'kependudukan_update']);
 	$routes->get('new', 'Kependudukan::new', ['as' => 'kependudukan_new']);
 	$routes->post('', 'Kependudukan::create', ['as' => 'kependudukan_create']);
 	$routes->get('(:num)/edit', 'Kependudukan::edit/$1', ['as' => 'kependudukan_edit']);

@@ -54,16 +54,19 @@ class Kependudukan extends BaseController
     ];
     return view('kependudukan/edit', $data);
   }
-  
-  public function update()
+
+  public function update($id)
   {
     if (!$this->validate($this->kependudukan->getValidationRules())) {
       return redirect()->back()->withInput();
     }
-    
     $foto = $this->request->getFile('foto');
     $data = $this->request->getPost();
+    $data['id'] = $id;
     if ($foto->getError() !== 4) {
+      if ($data['fotoLama'] != 'default.jpg') {
+        unlink("img/penduduk/{$data['fotoLama']}");
+      }
       $data['foto'] = $foto->getName();
       $this->kependudukan->save($data);
       $foto->move('img/penduduk');
@@ -75,6 +78,10 @@ class Kependudukan extends BaseController
 
   public function delete($id = null)
   {
+    $data = $this->kependudukan->find($id);
+    if ($data->foto !== 'default.jpg') {
+      unlink("img/penduduk/{$data->foto}");
+    }
     $this->kependudukan->delete($id);
     return redirect()->to('/kependudukan')->with('berhasil', 'Penduduk berhasil dihapus!');
   }

@@ -8,7 +8,7 @@ class kependudukan extends Model
 {
   protected $table = 'penduduk';
   protected $primaryKey = 'id';
-	protected $useTimestamps = false;
+  protected $useTimestamps = false;
   protected $returnType = 'object';
   protected $validationRules = [
     // 'keluarga_id' => [
@@ -70,7 +70,8 @@ class kependudukan extends Model
     'no_nik',
     'nama_ayah',
     'nama_ibu',
-    'tempat_tanggal_lahir',
+    'tempat_lahir',
+    'tanggal_lahir',
     'jenis_kelamin',
     'agama',
     'pendidikan',

@@ -22,9 +22,9 @@
         </div>
         <div class="card-body">
           <?= $validation->listErrors(); ?>
-          <form class="form" id="kt_form_2" action="/kependudukan" method="POST" autocomplete="off" enctype="multipart/form-data">
+          <form class="form" id="kt_form_2" action="/kependudukan/<?= $penduduk->id; ?>" method="POST" autocomplete="off" enctype="multipart/form-data">
             <input type="hidden" value="PUT" name="_method">
-            <input type="hidden" value="PUT" name="_method">
+            <input type="hidden" value="<?= $penduduk->foto; ?>" name="fotoLama">
             <?= csrf_field(); ?>
             <?= $this->include('kependudukan/form-control'); ?>
             <div class="row">
