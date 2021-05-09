@@ -26,7 +26,7 @@
             <span class="card-icon">
               <i class="flaticon2-favourite text-primary"></i>
             </span>
-            <h3 class="card-label">Data <?= $title; ?></h3>
+            <h3 class="card-label"><?= $title; ?></h3>
           </div>
           <div class="card-toolbar">
             <!--begin::Dropdown-->
@@ -77,31 +77,37 @@
           <?= $this->include('components/alert'); ?>
           <table class="table table-bordered table-hover table-checkable" id="datatable">
             <thead>
-              <tr style="text-align: center;">
-                <th>data</th>
+              <tr class="text-center">
+                <th>No</th>
                 <th>Aksi</th>
-                <th>data</th>
+                <th>Dusun</th>
+                <th>RW/RT</th>
+                <th>Luas</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td style="text-align: center;">data</td>
-                <td>
-                  <div class="d-flex">
-                    <a class="btn btn-sm btn-icon btn-clean" title="Ubah" href="<?= route_to('profil_wilayah_data_wilayah_edit', 1); ?>">
-                      <i class="far fa-edit fa-sm"></i>
-                    </a>
-                    <form action="<?= route_to('profil_wilayah_data_wilayah_delete', 1); ?>" method="post" class="d-inline">
-                      <input type="hidden" name="_method" value="DELETE">
-                      <?= csrf_field(); ?>
-                      <button type="submit" title="Hapus" onclick="return confirm('yakin dihapus?')" class="btn btn-sm btn-icon btn-clean">
-                        <i class="far fa-trash fa-sm"></i>
-                      </button>
-                    </form>
-                  </div>
-                </td>
-                <td>data</td>
-              </tr>
+              <?php foreach ($dataWilayah as $data) : ?>
+                <tr>
+                  <td class="text-center"><?= $no++; ?></td>
+                  <td>
+                    <div class="d-flex">
+                      <a class="btn btn-sm btn-icon btn-clean" title="Ubah" href="<?= route_to('profil_wilayah_data_wilayah_edit', $data->id); ?>">
+                        <i class="far fa-edit fa-sm"></i>
+                      </a>
+                      <form action="<?= route_to('profil_wilayah_data_wilayah_delete', $data->id); ?>" method="post" class="d-inline">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <?= csrf_field(); ?>
+                        <button type="submit" title="Hapus" onclick="return confirm('yakin dihapus?')" class="btn btn-sm btn-icon btn-clean">
+                          <i class="far fa-trash fa-sm"></i>
+                        </button>
+                      </form>
+                    </div>
+                  </td>
+                  <td>Dusun</td>
+                  <td>RW/RT</td>
+                  <td>Luas</td>
+                </tr>
+              <?php endforeach ?>
             </tbody>
           </table>
           <!--end: Datatable-->

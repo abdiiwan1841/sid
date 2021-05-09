@@ -9,11 +9,12 @@ class DataWilayah extends BaseController
 	public function index()
 	{
 		$data = [
-			'title' => 'Data Wilayah'
+			'title' => 'Data Wilayah',
+			'dataWilayah' => $this->dataWilayah->orderBy('id', 'DESC')->findAll(),
 		];
 		return view('profil-wilayah/index', $data);
 	}
-	
+
 	public function show($id = null)
 	{
 		$data = [
@@ -33,11 +34,11 @@ class DataWilayah extends BaseController
 
 	public function create()
 	{
-		// if (!$this->validate($this->dataWilayah->getValidationRules())) {
-		// 	return redirect()->to(route_to('profil_wilayah_data_wilayah_new'))->withInput();
-		// }
-		// $data = $this->request->getPost();
-		// $this->dataWilayah->save($data);
+		if (!$this->validate($this->dataWilayah->getValidationRules())) {
+			return redirect()->to(route_to('profil_wilayah_data_wilayah_new'))->withInput();
+		}
+		$data = $this->request->getPost();
+		$this->dataWilayah->save($data);
 		return redirect()->to(route_to('profil_wilayah_data_wilayah'))->with('berhasil', 'Data Wilayah berhasil ditambah!');
 	}
 
@@ -53,17 +54,17 @@ class DataWilayah extends BaseController
 
 	public function update($id = null)
 	{
-		// if (!$this->validate($this->dataWilayah->getValidationRules())) {
-		// 	return redirect()->to(route_to('profil_wilayah_data_wilayah_edit',1))->withInput();
-		// }
-		// $data = $this->request->getPost();
-		// $this->dataWilayah->save($data);
+		if (!$this->validate($this->dataWilayah->getValidationRules())) {
+			return redirect()->back()->withInput();
+		}
+		$data = $this->request->getPost();
+		$this->dataWilayah->save($data);
 		return redirect()->to(route_to('profil_wilayah_data_wilayah'))->with('berhasil', 'Data Wilayah berhasil diubah!');
 	}
 
 	public function delete($id = null)
 	{
-		// $this->dataWilayah->delete($id);
+		$this->dataWilayah->delete($id);
 		return redirect()->to(route_to('profil_wilayah_data_wilayah'))->with('berhasil', 'Data Wilayah berhasil dihapus!');
 	}
 }

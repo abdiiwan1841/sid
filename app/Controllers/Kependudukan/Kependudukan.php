@@ -3,7 +3,6 @@
 namespace App\Controllers\Kependudukan;
 
 use \App\Controllers\BaseController;
-use CodeIgniter\I18n\Time;
 
 class Kependudukan extends BaseController
 {
@@ -82,9 +81,7 @@ class Kependudukan extends BaseController
   public function delete($id = null)
   {
     $data = $this->kependudukan->find($id);
-    if ($data->foto !== 'default.jpg') {
-      unlink("img/penduduk/{$data->foto}");
-    }
+    if ($data->foto !== 'default.jpg') unlink("img/penduduk/{$data->foto}");
     $this->kependudukan->delete($id);
     return redirect()->to('/kependudukan')->with('berhasil', 'Penduduk berhasil dihapus!');
   }

@@ -1,5 +1,5 @@
 <div class="form-group row">
-  <div class="col d-flex justify-content-center">
+  <div class="col-12 d-flex justify-content-center">
     <div class="image-input image-input-outline mb-3" id="kt_image_1">
       <div class="image-input-wrapper" style="background-image: url(/img/penduduk/<?= $penduduk->foto ?? 'default.jpg' ?>)"></div>
 
@@ -21,7 +21,7 @@
   <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
     <label>Keluarga dari :</label>
     <select class="form-control select2" name="keluarga_id" id="kt_select2_4" data-placeholder="Pilih No KK">
-      <?php if(isset($penduduk_keluarga)) : ?>
+      <?php if (isset($penduduk_keluarga)) : ?>
         <option value="<?= $penduduk_keluarga->id; ?>" selected><?= $penduduk_keluarga->no_kk; ?></option>
       <?php else : ?>
         <option value="" selected disabled>Pilih No KK</option>
@@ -82,9 +82,9 @@
     <input type="text" name="pendidikan" class="form-control" placeholder="Pendidikan dalam KK" value="<?= old('pendidikan') ?? $penduduk->pendidikan; ?>" />
   </div>
   <div class="col-md-6 col-lg-4 mt-3">
-    <label>Kawin :</label>
+    <label>Status kawin :</label>
     <select class="form-control" name="kawin">
-      <option value="<?= $penduduk->kawin; ?>" selected><?= $penduduk->kawin; ?></option>
+      <option value="<?= $penduduk->kawin; ?>" selected disabled><?= $penduduk->kawin ?? 'Pilih Status'; ?></option>
       <option value="Kawin">Kawin</option>
       <option value="Belum Kawin">Belum Kawin</option>
       <option value="Cerai Hidup">Cerai Hidup</option>
