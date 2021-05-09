@@ -17,17 +17,16 @@
             <span class="card-icon">
               <i class="flaticon2-favourite text-primary"></i>
             </span>
-            <h3 class="card-label">Ubah Penduduk: <?= esc($penduduk->nama_lengkap) ?></h3>
+            <h3 class="card-label">Form Tambah Penduduk</h3>
           </div>
         </div>
         <div class="card-body">
           <?= $validation->listErrors(); ?>
-          <form class="form" id="kt_form_2" action="<?= route_to('kependudukan_update', $penduduk->id); ?>" method="POST" autocomplete="off" enctype="multipart/form-data">
-            <input type="hidden" name="_method" value="PUT">
-            <input type="hidden" name="id" value="<?= $penduduk->id; ?>">
+          <form class="form" id="kt_form_2" action="/kependudukan" method="POST" autocomplete="off" enctype="multipart/form-data">
+            <input type="hidden" value="PUT" name="_method">
+            <input type="hidden" value="PUT" name="_method">
             <?= csrf_field(); ?>
             <?= $this->include('kependudukan/form-control'); ?>
-           
             <div class="row">
               <div class="col-lg-12">
                 <button type="submit" class="btn btn-primary font-weight-bold mr-2">Simpan</button>

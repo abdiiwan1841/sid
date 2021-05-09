@@ -38,6 +38,7 @@ class Kependudukan extends BaseController
       $this->kependudukan->save($data);
       $foto->move('img/penduduk');
     } else {
+      $data['foto'] = 'default.jpg';
       $this->kependudukan->save($data);
     }
     return redirect()->to('/kependudukan')->with('berhasil', 'Penduduk berhasil ditambah!');
@@ -54,16 +55,21 @@ class Kependudukan extends BaseController
     return view('kependudukan/edit', $data);
   }
   
-  public function update($id)
+  public function update()
   {
-    $data = $this->request->getPost();
     if (!$this->validate($this->kependudukan->getValidationRules())) {
       return redirect()->back()->withInput();
     }
-    dd($foto = $this->request->getFile('foto'));
     
-    $this->kependudukan->save($data);
-    
+    $foto = $this->request->getFile('foto');
+    $data = $this->request->getPost();
+    if ($foto->getError() !== 4) {
+      $data['foto'] = $foto->getName();
+      $this->kependudukan->save($data);
+      $foto->move('img/penduduk');
+    } else {
+      $this->kependudukan->save($data);
+    }
     return redirect()->to('/kependudukan')->with('berhasil', 'Penduduk berhasil diubah!');
   }
 
