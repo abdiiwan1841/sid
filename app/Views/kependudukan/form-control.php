@@ -62,7 +62,10 @@
     <label>Jenis Kelamin :</label>
     <select class="form-control" name="jenis_kelamin">
       <option value="perempuan">Perempuan</option>
-      <option value="Laki-laki" <?= ($penduduk->jenis_kelamin == 'Laki-laki') ? 'selected' : ''; ?>>Laki-laki</option>
+      <option value="Laki-laki" <?= ($penduduk->jenis_kelamin == 'Laki-laki') ? 'selected' : '' ?>>Laki-laki</option>
+      <?= $penduduk->jenis_kelamin ?? '
+        <option value="" selected disabled>Pilih Jenis Kelamin</option>
+      ' ?>
     </select>
   </div>
   <div class="col-md-6 col-lg-4 mt-3">
