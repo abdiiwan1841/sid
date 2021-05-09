@@ -20,16 +20,22 @@ class DataWilayah extends Migration
 				'constraint' => '255',
 			],
 			'rw'       => [
-				'type'       => 'VARCHAR',
+				'type'       => 'INT',
 				'constraint' => '255',
 			],
 			'rt'       => [
-				'type'       => 'VARCHAR',
+				'type'       => 'INT',
 				'constraint' => '255',
 			],
 			'luas'       => [
 				'type'       => 'VARCHAR',
 				'constraint' => '255',
+			],
+			'created_at'       => [
+				'type'       => 'DATETIME',
+			],
+			'updated_at'       => [
+				'type'       => 'DATETIME',
 			],
 		]);
 		$this->forge->addKey('id', true);

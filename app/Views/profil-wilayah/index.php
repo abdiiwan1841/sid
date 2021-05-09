@@ -86,7 +86,9 @@
               </tr>
             </thead>
             <tbody>
-              <?php foreach ($dataWilayah as $data) : ?>
+              <?php
+              $no = 1;
+              foreach ($dataWilayah as $data) : ?>
                 <tr>
                   <td class="text-center"><?= $no++; ?></td>
                   <td>
@@ -103,9 +105,9 @@
                       </form>
                     </div>
                   </td>
-                  <td>Dusun</td>
-                  <td>RW/RT</td>
-                  <td>Luas</td>
+                  <td><?= $data->dusun; ?></td>
+                  <td><?= $data->rw; ?>/<?= $data->rt; ?></td>
+                  <td><?= $data->luas; ?></td>
                 </tr>
               <?php endforeach ?>
             </tbody>

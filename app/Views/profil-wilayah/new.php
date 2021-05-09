@@ -24,41 +24,7 @@
           <?= $validation->listErrors(); ?>
           <form class="form" id="kt_form_2" action="<?= route_to('profil_wilayah_data_wilayah_create'); ?>" method="POST" autocomplete="off">
             <?= csrf_field(); ?>
-            <div class="form-group row">
-              <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
-                <label>Form</label>
-                <input type="text" name="nama_lengkap" class="form-control" placeholder="Form penduduk" value="<?= old('nama_lengkap'); ?>" />
-              </div>
-              <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
-                <label>Tanggal lahir</label>
-                <div class="input-group date">
-                  <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="kt_datepicker_3" name="tanggal_lahir" value="<?= old('tanggal_lahir') ?>" />
-                  <div class="input-group-append">
-                    <span class="input-group-text">
-                      <i class="la la-calendar"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
-                <label>Jenis Kelamin :</label>
-                <select class="form-control" name="jenis_kelamin">
-                  <option value="" selected disabled>Pilih jenis kelamin</option>
-                  <option value="Laki-laki">Laki-laki</option>
-                  <option value="perempuan">Perempuan</option>
-                </select>
-              </div>
-              <div class="col-md-6 col-lg-4 mt-3">
-                <label>Kawin :</label>
-                <select class="form-control" name="kawin">
-                  <option value="" selected disabled>Pilih status kawin</option>
-                  <option value="Kawin">Kawin</option>
-                  <option value="Belum Kawin">Belum Kawin</option>
-                  <option value="Cerai Hidup">Cerai Hidup</option>
-                  <option value="Cerai Mati">Cerai Mati</option>
-                </select>
-              </div>
-            </div>
+            <?= $this->include('profil-wilayah/form-control'); ?>
             <div class="row">
               <div class="col-lg-12">
                 <button type="submit" class="btn btn-primary font-weight-bold mr-2">Simpan</button>

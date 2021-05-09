@@ -28,6 +28,7 @@ class DataWilayah extends BaseController
 		$data = [
 			'title' => 'Tambah Data Wilayah',
 			'validation' => $this->validation,
+			'data' => $this->dataWilayah,
 		];
 		return view('profil-wilayah/new', $data);
 	}
@@ -35,7 +36,7 @@ class DataWilayah extends BaseController
 	public function create()
 	{
 		if (!$this->validate($this->dataWilayah->getValidationRules())) {
-			return redirect()->to(route_to('profil_wilayah_data_wilayah_new'))->withInput();
+			return redirect()->back()->withInput();
 		}
 		$data = $this->request->getPost();
 		$this->dataWilayah->save($data);
