@@ -1,6 +1,7 @@
 <?php
 
 use Config\Services;
+use CodeIgniter\I18n\Time;
 
 if (! function_exists('logged_in'))
 {
@@ -97,5 +98,10 @@ if (! function_exists('has_permission'))
         }
 
         return false;
+	}
+	
+	function ttl($text){
+	  $time = Time::parse($text);
+	  return esc($time->toLocalizedString('d MMMM yyyy'));
 	}
 }

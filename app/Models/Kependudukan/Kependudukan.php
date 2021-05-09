@@ -24,28 +24,10 @@ class kependudukan extends Model
         'required' => 'Nama lengkap harus diisi',
       ],
     ],
-    'nama_ayah' => [
-      'rules'  => 'required|string',
-      'errors' => [
-        'required' => 'Nama ayah harus diisi.',
-      ],
-    ],
-    'nama_ibu' => [
-      'rules'  => 'required|string',
-      'errors' => [
-        'required' => 'Nama ibu harus diisi.',
-      ],
-    ],
     'tanggal_lahir' => [
       'rules'  => 'required',
       'errors' => [
         'required' => 'Tanggal lahir harus diisi',
-      ],
-    ],
-    'tempat_lahir' => [
-      'rules'  => 'required|string',
-      'errors' => [
-        'required' => 'Tempat lahir harus diisi',
       ],
     ],
     'agama' => 'required|string',
@@ -54,12 +36,12 @@ class kependudukan extends Model
     'umur' => 'required|integer',
     'alamat' => 'required',
     'pekerjaan' => 'required',
-    'hubungan_keluarga' => [
-      'rules'  => 'required|string',
-      'errors' => [
-        'required' => 'Hubungan keluarga harus diisi',
-      ],
-    ],
+    // 'hubungan_keluarga' => [
+    //   'rules'  => 'required|string',
+    //   'errors' => [
+    //     'required' => 'Hubungan keluarga harus diisi',
+    //   ],
+    // ],
   ];
 
   protected $allowedFields =

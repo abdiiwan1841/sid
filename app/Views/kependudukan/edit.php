@@ -17,9 +17,10 @@
             <span class="card-icon">
               <i class="flaticon2-favourite text-primary"></i>
             </span>
-            <h3 class="card-label">Form Tambah Penduduk</h3>
+            <h3 class="card-label">Ubah Penduduk : <?= $penduduk->nama_lengkap ?></h3>
           </div>
         </div>
+        
         <div class="card-body">
           <?= $validation->listErrors(); ?>
           <form class="form" id="kt_form_2" action="/kependudukan/<?= $penduduk->id; ?>" method="POST" autocomplete="off" enctype="multipart/form-data">

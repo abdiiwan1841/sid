@@ -3,6 +3,7 @@
 namespace App\Controllers\Kependudukan;
 
 use \App\Controllers\BaseController;
+use CodeIgniter\I18n\Time;
 
 class Kependudukan extends BaseController
 {
@@ -46,11 +47,13 @@ class Kependudukan extends BaseController
 
   public function edit($id = null)
   {
+    $penduduk = $this->kependudukan->find($id);
     $data = [
       'title' => 'Ubah Data Penduduk',
       'validation' => $this->validation,
-      'penduduk' => $this->kependudukan->find($id),
-      'keluarga' => $this->keluarga->findAll(),
+      'penduduk' => $penduduk,
+      'keluarga' => $this->keluarga->where('id !=', $penduduk->keluarga_id)->findAll(),
+      'penduduk_keluarga' => $this->keluarga->find($penduduk->keluarga_id),
     ];
     return view('kependudukan/edit', $data);
   }

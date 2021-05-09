@@ -21,9 +21,14 @@
   <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
     <label>Keluarga dari :</label>
     <select class="form-control select2" name="keluarga_id" id="kt_select2_4" data-placeholder="Pilih No KK">
-      <?php foreach ($keluarga as $k) : ?>
-        <option value="<?= $k->id; ?>"><?= $k->no_kk; ?></option>
-      <?php endforeach; ?>
+      <?php if(isset($penduduk_keluarga)) : ?>
+        <option value="<?= $penduduk_keluarga->id; ?>" selected><?= $penduduk_keluarga->no_kk; ?></option>
+      <?php else : ?>
+        <option value="" selected disabled>Pilih No KK</option>
+        <?php foreach ($keluarga as $k) : ?>
+          <option value="<?= $k->id; ?>"><?= $k->no_kk; ?></option>
+        <?php endforeach; ?>
+      <?php endif; ?>
     </select>
   </div>
   <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
@@ -32,7 +37,7 @@
   </div>
   <div class="col-md-6 col-lg-4 mt-3">
     <label>Hubungan keluarga</label>
-    <input type="text" name="hubungan_keluarga" class="form-control" placeholder="cth: Anak Kandung" value="<?= old('hubungan_keluarga') ?? $penduduk->hubungan_keluarga; ?>" />
+    <input type="text" name="hubungan_keluarga" class="form-control" placeholder="cth: Anak, Kepala Keluarga, Istri, dll" value="<?= old('hubungan_keluarga') ?? $penduduk->hubungan_keluarga; ?>" />
   </div>
   <div class="col-md-6 col-lg-4 mt-3">
     <label>Nama Ayah</label>
