@@ -83,6 +83,7 @@
                 <th>Dusun</th>
                 <th>RW/RT</th>
                 <th>Luas</th>
+                <th>Di Data Pada</th>
               </tr>
             </thead>
             <tbody>
@@ -105,9 +106,10 @@
                       </form>
                     </div>
                   </td>
-                  <td><?= $data->dusun; ?></td>
-                  <td><?= $data->rw; ?>/<?= $data->rt; ?></td>
-                  <td><?= $data->luas; ?></td>
+                  <td><?= esc($data->dusun); ?></td>
+                  <td><?= esc($data->rw); ?>/<?= esc($data->rt); ?></td>
+                  <td><?= esc($data->luas); ?></td>
+                  <td><?= ttl($data->created_at); ?></td>
                 </tr>
               <?php endforeach ?>
             </tbody>

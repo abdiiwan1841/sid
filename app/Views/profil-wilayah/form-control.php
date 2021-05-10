@@ -13,6 +13,6 @@
   </div>
   <div class="col-md-6 col-lg-4 mt-3">
     <label>Luas</label>
-    <input type="text" name="luas" class="form-control" placeholder="Luas" value="<?= old('luas') ?? $data->luas; ?>" />
+    <input type="text" name="luas" class="form-control" placeholder="cth: 12km" value="<?= old('luas') ?? $data->luas; ?>" />
   </div>
 </div>

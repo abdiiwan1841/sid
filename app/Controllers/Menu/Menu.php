@@ -95,7 +95,6 @@ class Menu extends BaseController
     //   }
     // }
     session()->setFlashdata('berhasil', 'Menu berhasil diubah!');
-    // return redirect()->to('/menu-management')->withInput();
     return redirect()->to('/menu-management');
   }
 

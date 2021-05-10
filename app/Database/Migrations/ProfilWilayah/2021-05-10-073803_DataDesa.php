@@ -4,7 +4,7 @@ namespace App\Database\Migrations\ProfilWilayah;
 
 use CodeIgniter\Database\Migration;
 
-class DataWilayah extends Migration
+class DataDesa extends Migration
 {
 	public function up()
 	{
@@ -19,16 +19,26 @@ class DataWilayah extends Migration
 				'type'       => 'VARCHAR',
 				'constraint' => '255',
 			],
-			'rw'       => [
+			'kepala_dusun'       => [
 				'type'       => 'VARCHAR',
+				'constraint' => '255',
+			],
+			'rw'       => [
+				'type'       => 'INT',
 				'constraint' => '255',
 			],
 			'rt'       => [
-				'type'       => 'VARCHAR',
+				'type'       => 'INT',
 				'constraint' => '255',
 			],
-			'luas'       => [
-				'type'       => 'VARCHAR',
+			'laki_laki'       => [
+				'type'       => 'INT',
+				'default' => 0,
+				'constraint' => '255',
+			],
+			'perempuan'       => [
+				'type'       => 'INT',
+				'default' => 0,
 				'constraint' => '255',
 			],
 			'created_at'       => [
@@ -39,11 +49,11 @@ class DataWilayah extends Migration
 			],
 		]);
 		$this->forge->addKey('id', true);
-		$this->forge->createTable('data_wilayah');
+		$this->forge->createTable('data_desa');
 	}
 
 	public function down()
 	{
-		$this->forge->dropTable('data_wilayah');
+		$this->forge->dropTable('data_desa');
 	}
 }
