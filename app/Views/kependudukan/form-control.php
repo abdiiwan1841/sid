@@ -25,10 +25,10 @@
         <option value="<?= $penduduk_keluarga->id; ?>" selected><?= $penduduk_keluarga->no_kk; ?></option>
       <?php else : ?>
         <option value="" selected disabled>Pilih No KK</option>
-        <?php foreach ($keluarga as $k) : ?>
-          <option value="<?= $k->id; ?>"><?= $k->no_kk; ?></option>
-        <?php endforeach; ?>
       <?php endif; ?>
+      <?php foreach ($keluarga as $k) : ?>
+        <option value="<?= $k->id; ?>"><?= $k->no_kk; ?></option>
+      <?php endforeach; ?>
     </select>
   </div>
   <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
@@ -84,7 +84,7 @@
   <div class="col-md-6 col-lg-4 mt-3">
     <label>Status kawin :</label>
     <select class="form-control" name="kawin">
-      <option value="<?= $penduduk->kawin; ?>" selected disabled><?= $penduduk->kawin ?? 'Pilih Status'; ?></option>
+      <option value="<?= $penduduk->kawin; ?>" selected><?= $penduduk->kawin ?? 'Pilih Status'; ?></option>
       <option value="Kawin">Kawin</option>
       <option value="Belum Kawin">Belum Kawin</option>
       <option value="Cerai Hidup">Cerai Hidup</option>

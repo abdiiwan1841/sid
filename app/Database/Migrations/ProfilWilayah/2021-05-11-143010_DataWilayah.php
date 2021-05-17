@@ -15,8 +15,8 @@ class DataWilayah extends Migration
 				'unsigned'       => true,
 				'auto_increment' => true,
 			],
-			'dusun'       => [
-				'type'       => 'VARCHAR',
+			'dusun_id'       => [
+				'type'       => 'INT',
 				'constraint' => '255',
 			],
 			'rw'       => [

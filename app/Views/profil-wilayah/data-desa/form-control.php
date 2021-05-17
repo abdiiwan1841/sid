@@ -10,10 +10,10 @@
         <option value="<?= $data_penduduk->id; ?>" selected><?= $data_penduduk->nama_lengkap; ?></option>
       <?php else : ?>
         <option value="" selected disabled>Pilih kepala dusun</option>
-        <?php foreach ($penduduk as $p) : ?>
-          <option value="<?= $p->id; ?>"><?= $p->nama_lengkap; ?></option>
-        <?php endforeach; ?>
       <?php endif ?>
+      <?php foreach ($penduduk as $p) : ?>
+        <option value="<?= $p->id; ?>"><?= $p->nama_lengkap; ?></option>
+      <?php endforeach; ?>
     </select>
   </div>
   <div class="col-md-6 col-lg-4 mt-3 mt-md-0">

@@ -66,7 +66,7 @@
             </div>
             <!--end::Dropdown-->
             <!--begin::Button-->
-            <a href="<?= route_to('profil_wilayah_data_desa_new', 1); ?>" class="btn btn-primary font-weight-bolder">
+            <a href="<?= route_to('profil_wilayah_data_desa_new'); ?>" class="btn btn-primary font-weight-bolder mt-2 mt-md-0">
               <i class="la la-plus"></i>Tambah
             </a>
             <!--end::Button-->
@@ -92,7 +92,9 @@
             <tbody>
               <?php
               $no = 1;
-              foreach ($dataDesa as $data) : ?>
+              foreach ($dataDesa as $data) : 
+                $data_penduduk = $db->table('penduduk')->select('nama_lengkap')->where('id', $data->kepala_dusun)->get()->getRow();
+                ?>
                 <tr>
                   <td class="text-center"><?= $no++; ?></td>
                   <td>
@@ -109,19 +111,23 @@
                       </form>
                     </div>
                   </td>
-                  <td><?= $data->dusun; ?></td>
-                  <td><?php
-                      $this->db->table('data_wilayah')->get()->getRedu; ?></td>
-                  <td><?= $data->rt == '' ? 0 : $data->rt; ?></td>
-                  <td><?= $data->rw; ?></td>
-                  <td><?= $data->laki_laki; ?></td>
-                  <td><?= $data->perempuan; ?></td>
-                  <td><?= $data->laki_laki + $data->perempuan; ?></td>
+                  <td><?= esc($data->dusun); ?></td>
+                  <td><?= esc($data_penduduk->nama_lengkap); ?></td>
+                  <td><?= $data->rt == '' ? 0 : esc($data->rt); ?></td>
+                  <td><?= esc($data->rw); ?></td>
+                  <td><?= esc($data->laki_laki); ?></td>
+                  <td><?= esc($data->perempuan); ?></td>
+                  <td><?= esc($data->laki_laki) + esc($data->perempuan); ?></td>
                 </tr>
               <?php endforeach ?>
             </tbody>
             <tfoot>
               <tr>
+                <td colspan="4">TOTAL</td>
+                <td>kd</td>
+                <td>kd</td>
+                <td>TOTAL</td>
+                <td>TOTAL</td>
                 <td>TOTAL</td>
               </tr>
             </tfoot>

@@ -48,4 +48,8 @@ class DataDesa extends Model
 		// ],
 	];
 	protected $validationMessages   = [];
+	
+	public function getDusun($dusun_id){
+	  return $this->find($dusun_id);
+	}
 }

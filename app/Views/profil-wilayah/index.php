@@ -66,7 +66,7 @@
             </div>
             <!--end::Dropdown-->
             <!--begin::Button-->
-            <a href="<?= route_to('profil_wilayah_data_wilayah_new', 1); ?>" class="btn btn-primary font-weight-bolder">
+            <a href="<?= route_to('profil_wilayah_data_wilayah_new', 1); ?>" class="btn btn-primary font-weight-bolder mt-2 mt-md-0">
               <i class="la la-plus"></i>Tambah
             </a>
             <!--end::Button-->
@@ -106,8 +106,8 @@
                       </form>
                     </div>
                   </td>
-                  <td><?= esc($data->dusun); ?></td>
-                  <td><?= esc($data->rw); ?>/<?= esc($data->rt); ?></td>
+                  <td><?= esc($dataDesa->getDusun($data->dusun_id)->dusun ?? 'Dusun tidak tersedia'); ?></td>
+                  <td><?= $data->rw == '' ? '-' : esc($data->rw); ?>/<?= $data->rt == '' ? '-' : esc($data->rt); ?></td>
                   <td><?= esc($data->luas); ?></td>
                   <td><?= ttl($data->created_at); ?></td>
                 </tr>

@@ -11,6 +11,7 @@ class DataWilayah extends BaseController
 		$data = [
 			'title' => 'Data Wilayah',
 			'dataWilayah' => $this->dataWilayah->orderBy('id', 'DESC')->findAll(),
+			'dataDesa' => $this->dataDesa,
 		];
 		return view('profil-wilayah/index', $data);
 	}
@@ -29,6 +30,7 @@ class DataWilayah extends BaseController
 			'title' => 'Tambah Data Wilayah',
 			'validation' => $this->validation,
 			'data' => $this->dataWilayah,
+			'desa' =>  $this->dataDesa->findAll(),
 		];
 		return view('profil-wilayah/new', $data);
 	}
@@ -45,10 +47,13 @@ class DataWilayah extends BaseController
 
 	public function edit($id = null)
 	{
+	  $dataWilayah = $this->dataWilayah->find($id);
 		$data = [
 			'title' => 'Ubah Data Wilayah',
 			'validation' => $this->validation,
-			'data' => $this->dataWilayah->find($id),
+			'data' => $dataWilayah,
+			'data_desa' =>  $this->dataDesa->where('id', $dataWilayah->dusun_id ?? 1)->first(),
+			'desa' =>  $this->dataDesa->where('id !=', $dataWilayah->dusun_id ?? 1)->findAll(),
 		];
 		return view('profil-wilayah/edit', $data);
 	}
@@ -57,9 +62,6 @@ class DataWilayah extends BaseController
 	{
 		$data = $this->request->getPost();
 		$data['id'] = $id;
-		$this->dataWilayah->setValidationRules([
-			'dusun' => "required|is_unique[data_wilayah.dusun,id,{$id}]"
-		]);
 		if (!$this->validate($this->dataWilayah->getValidationRules())) {
 			return redirect()->back()->withInput();
 		}

@@ -10,16 +10,21 @@ class DataWilayah extends Model
 	protected $table                = 'data_wilayah';
 	protected $returnType           = 'object';
 	protected $protectFields        = true;
-	protected $allowedFields        = ['dusun', 'rw', 'rt', 'luas'];
+	protected $allowedFields        = ['dusun_id', 'rw', 'rt', 'luas'];
 
 	// Dates
 	protected $useTimestamps        = true;
 
 	// Validation
 	protected $validationRules      = [
-		'dusun' => 'required|is_unique[data_wilayah.dusun]',
-		'rw' => 'required|integer',
-		'rt' => 'required|integer',
+		'dusun_id' => [
+		  'rules' => 'required',
+		  'errors' => [
+		    'required' => 'Dusun harus diisi'
+		  ],
+		],
 	];
 	protected $validationMessages   = [];
+	
+	
 }

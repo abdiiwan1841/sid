@@ -23,10 +23,7 @@
         <?php else : ?>
             <div class="form-group">
                 <label class="font-size-h6 font-weight-bolder text-dark"><?= lang('Auth.emailOrUsername') ?></label>
-                <input class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?> form-control-solid h-auto py-6 px-6 rounded-lg" type="text" name="login" autocomplete="off" />
-                <div class="invalid-feedback">
-                    <?= session('errors.login') ?>
-                </div>
+                <input class="form-control <?php if (session('errors.login')) : ?>is-invalid<?php endif ?> form-control-solid h-auto py-6 px-6 rounded-lg" type="text" name="login" autocomplete="off" value="<?= old('login') ?>" />
             </div>
         <?php endif; ?>
         <!--end::Form group-->

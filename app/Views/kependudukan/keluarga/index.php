@@ -66,7 +66,7 @@
             </div>
             <!--end::Dropdown-->
             <!--begin::Button-->
-            <a href="<?= route_to('keluarga_new') ?>" class="btn btn-primary font-weight-bolder">
+            <a href="<?= route_to('keluarga_new') ?>" class="btn btn-primary font-weight-bolder mt-2 mt-md-0">
               <i class="la la-plus"></i>Tambah Keluarga
             </a>
             <!--end::Button-->

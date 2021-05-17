@@ -66,7 +66,7 @@
             </div>
             <!--end::Dropdown-->
             <!--begin::Button-->
-            <a href="<?= base_url('kependudukan/new'); ?>" class="btn btn-primary font-weight-bolder mt-3 mt-md-0">
+            <a href="<?= base_url('kependudukan/new'); ?>" class="btn btn-primary font-weight-bolder mt-2 mt-md-0">
               <i class="la la-plus"></i>Tambah Penduduk
             </a>
             <!--end::Button-->

@@ -11,6 +11,7 @@ class DataDesa extends BaseController
 		$data = [
 			'title' => 'Data Dusun Desa',
 			'dataDesa' => $this->dataDesa->orderBy('id', 'DESC')->findAll(),
+			'db' => $this->db,
 		];
 		return view('profil-wilayah/data-desa/index', $data);
 	}
@@ -51,7 +52,7 @@ class DataDesa extends BaseController
 			'title' => 'Ubah Data Dusun Desa',
 			'validation' => $this->validation,
 			'data' => $dataDesa,
-			'penduduk' => $this->kependudukan->findAll(),
+			'penduduk' => $this->kependudukan->where('id !=', $dataDesa->kepala_dusun)->findAll(),
 			'data_penduduk' => $this->kependudukan->find($dataDesa->kepala_dusun),
 		];
 		return view('profil-wilayah/data-desa/edit', $data);
@@ -63,14 +64,14 @@ class DataDesa extends BaseController
 			return redirect()->back()->withInput();
 		}
 		$data = $this->request->getPost();
-		$data['id'] = $id);
+		$data['id'] = $id;
 		$this->dataDesa->save($data);
 		return redirect()->to(route_to('profil_wilayah_data_desa'))->with('berhasil', 'Data Dusun Desa berhasil diubah!');
 	}
 
 	public function delete($id = null)
 	{
-		// $this->dataDesa->delete($id);
+		$this->dataDesa->delete($id);
 		return redirect()->to(route_to('profil_wilayah_data_desa'))->with('berhasil', 'Data Dusun Desa berhasil dihapus!');
 	}
 }

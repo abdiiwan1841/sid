@@ -45,7 +45,7 @@ class Keluarga extends BaseController
 		$data = [
 			'title' => 'Ubah Data Penduduk',
 			'validation' => $this->validation,
-			'penduduk' => $this->kependudukanModel->findAll(),
+			'penduduk' => $this->kependudukan->findAll(),
 			'keluarga' => $this->keluarga->find($id),
 		];
 		return view('kependudukan/keluarga/edit', $data);
@@ -54,7 +54,7 @@ class Keluarga extends BaseController
 	public function update($id = null)
 	{
 		if (!$this->validate($this->keluarga->getValidationRules())) {
-			return redirect()->to('/kependudukan/keluarga/' . $id . '/edit')->withInput();
+			return redirect()->to()->withInput();
 		}
 		$data = $this->request->getPost();
 		$this->keluarga->save($data);
@@ -73,7 +73,7 @@ class Keluarga extends BaseController
 			'title' => 'Tambah Penduduk keluarga',
 			'validation' => $this->validation,
 			'keluarga' => $this->keluarga->find($keluarga_id),
-			'ppenduduk' => $this->kependudukanModel->findAll(),
+			'ppenduduk' => $this->kependudukan->findAll(),
 		];
 		return view('kependudukan/keluarga/new-penduduk', $data);
 	}
