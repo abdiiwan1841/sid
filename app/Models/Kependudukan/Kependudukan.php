@@ -31,17 +31,23 @@ class kependudukan extends Model
       ],
     ],
     'agama' => 'required|string',
-    'pendidikan' => 'required|string',
-    'kawin' => 'required|string',
-    'umur' => 'required|integer',
-    'alamat' => 'required',
-    'pekerjaan' => 'required',
+    // 'pendidikan' => 'required',
+    // 'kawin' => 'required',
+    // 'umur' => 'required|integer',
+    // 'alamat' => 'required',
+    // 'pekerjaan' => 'required',
     // 'hubungan_keluarga' => [
-    //   'rules'  => 'required|string',
+    //   'rules'  => 'required',
     //   'errors' => [
     //     'required' => 'Hubungan keluarga harus diisi',
     //   ],
     // ],
+    'jenis_kelamin' => [
+      'rules'  => 'required',
+      'errors' => [
+        'required' => 'Jenis kelamin harus diisi',
+      ],
+    ],
   ];
 
   protected $allowedFields =
@@ -72,5 +78,13 @@ class kependudukan extends Model
     $data = $this->find($id);
     if ($data) return $data;
     throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+  }
+  public function getNamaLengkap($id)
+  {
+    return $this->db->table($this->table)->select('nama_lengkap')->where('id', $id)->get()->getRow();
+  }
+  public function getPenduduk($id)
+  {
+    return $this->find($id);
   }
 }

@@ -81,7 +81,7 @@
                 <th>No</th>
                 <th>Aksi</th>
                 <th>Dusun</th>
-                <th>RW/RT</th>
+                <th>RT/RW</th>
                 <th>Luas</th>
                 <th>Di Data Pada</th>
               </tr>
@@ -106,8 +106,8 @@
                       </form>
                     </div>
                   </td>
-                  <td><?= esc($dataDesa->getDusun($data->dusun_id)->dusun ?? 'Dusun tidak tersedia'); ?></td>
-                  <td><?= $data->rw == '' ? '-' : esc($data->rw); ?>/<?= $data->rt == '' ? '-' : esc($data->rt); ?></td>
+                  <td><?= $dataDesa->getDusun($data->dusun_id)->dusun ? '<span class="text-danger">Dusun tidak tersedia</span>' : esc($dataDesa->getDusun($data->dusun_id)->dusun) ; ?></td>
+                  <td><?= $data->rt == '' ? '-' : esc($data->rt); ?>/<?= $data->rw == '' ? '-' : esc($data->rw); ?></td>
                   <td><?= esc($data->luas); ?></td>
                   <td><?= ttl($data->created_at); ?></td>
                 </tr>

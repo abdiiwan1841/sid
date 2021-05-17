@@ -6,37 +6,24 @@ use CodeIgniter\Model;
 
 class PutusSekolah extends Model
 {
-	protected $DBGroup              = 'default';
-	protected $table                = 'putussekolahs';
+	protected $table                = 'putus_sekolah';
 	protected $primaryKey           = 'id';
-	protected $useAutoIncrement     = true;
-	protected $insertID             = 0;
-	protected $returnType           = 'array';
-	protected $useSoftDelete        = false;
-	protected $protectFields        = true;
-	protected $allowedFields        = [];
-
-	// Dates
-	protected $useTimestamps        = false;
-	protected $dateFormat           = 'datetime';
-	protected $createdField         = 'created_at';
-	protected $updatedField         = 'updated_at';
-	protected $deletedField         = 'deleted_at';
-
+	protected $returnType						= 'object';
+	protected $allowedFields        = ['penduduk_id', 'alasan_putus_sekolah'];
+	protected $useTimestamps        = true;
 	// Validation
-	protected $validationRules      = [];
-	protected $validationMessages   = [];
-	protected $skipValidation       = false;
-	protected $cleanValidationRules = true;
-
-	// Callbacks
-	protected $allowCallbacks       = true;
-	protected $beforeInsert         = [];
-	protected $afterInsert          = [];
-	protected $beforeUpdate         = [];
-	protected $afterUpdate          = [];
-	protected $beforeFind           = [];
-	protected $afterFind            = [];
-	protected $beforeDelete         = [];
-	protected $afterDelete          = [];
+	protected $validationRules      = [
+		'penduduk_id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'Penduduk harus diisi.'
+			]
+		],
+		// 'alasan_putus_sekolah' => [
+		// 	'rules' => 'required',
+		// 	'errors' => [
+		// 		'required' => 'Alasan harus diisi.'
+		// 	]
+		// ],
+	];
 }

@@ -6,37 +6,24 @@ use CodeIgniter\Model;
 
 class TunaKarya extends Model
 {
-	protected $DBGroup              = 'default';
-	protected $table                = 'tunakaryas';
+	protected $table                = 'tuna_karya';
 	protected $primaryKey           = 'id';
-	protected $useAutoIncrement     = true;
-	protected $insertID             = 0;
-	protected $returnType           = 'array';
-	protected $useSoftDelete        = false;
-	protected $protectFields        = true;
-	protected $allowedFields        = [];
-
-	// Dates
-	protected $useTimestamps        = false;
-	protected $dateFormat           = 'datetime';
-	protected $createdField         = 'created_at';
-	protected $updatedField         = 'updated_at';
-	protected $deletedField         = 'deleted_at';
-
+	protected $returnType						= 'object';
+	protected $allowedFields        = ['penduduk_id', 'alasan_menganggur'];
+	protected $useTimestamps        = true;
 	// Validation
-	protected $validationRules      = [];
-	protected $validationMessages   = [];
-	protected $skipValidation       = false;
-	protected $cleanValidationRules = true;
-
-	// Callbacks
-	protected $allowCallbacks       = true;
-	protected $beforeInsert         = [];
-	protected $afterInsert          = [];
-	protected $beforeUpdate         = [];
-	protected $afterUpdate          = [];
-	protected $beforeFind           = [];
-	protected $afterFind            = [];
-	protected $beforeDelete         = [];
-	protected $afterDelete          = [];
+	protected $validationRules      = [
+		'penduduk_id' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'Penduduk harus diisi.'
+			]
+		],
+		// 'alasan_menganggur' => [
+		// 	'rules' => 'required',
+		// 	'errors' => [
+		// 		'required' => 'Alasan harus diisi.'
+		// 	]
+		// ],
+	];
 }
