@@ -14,8 +14,6 @@
   </div>
   <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
     <label>Alasan Menganggur</label>
-    <textarea rows="5" name="alasan_menganggur" class="form-control" placeholder="Tulis alasannya ..">
-      <?= old('alasan_menganggur') ?? $tuna_karya->alasan_menganggur; ?>
-    </textarea>
+    <textarea rows="5" name="alasan_menganggur" class="form-control" placeholder="Tulis alasannya .."><?= old('alasan_menganggur') ?? $tuna_karya->alasan_menganggur; ?></textarea>
   </div>
 </div>
