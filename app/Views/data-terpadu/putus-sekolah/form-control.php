@@ -14,8 +14,6 @@
   </div>
   <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
     <label>Alasan Putus Sekolah</label>
-    <textarea rows="5" name="alasan_putus_sekolah" class="form-control" placeholder="Tulis alasannya ..">
-      <?= old('alasan_putus_sekolah') ?? $putus_sekolah->alasan_putus_sekolah; ?>
-    </textarea>
+    <textarea rows="5" name="alasan_putus_sekolah" class="form-control" placeholder="Tulis alasannya .."><?= old('alasan_putus_sekolah') ?? $putus_sekolah->alasan_putus_sekolah; ?></textarea>
   </div>
 </div>

@@ -66,7 +66,7 @@
             </div>
             <!--end::Dropdown-->
             <!--begin::Button-->
-            <a href="<?= route_to('validas_usia_new', 1); ?>" class="btn btn-primary font-weight-bolder">
+            <a href="<?= route_to('data_terpadu_difabilitas_new', 1); ?>" class="btn btn-primary font-weight-bolder mt-2 mt-md-0">
               <i class="la la-plus"></i>Tambah
             </a>
             <!--end::Button-->
@@ -78,30 +78,44 @@
           <table class="table table-bordered table-hover table-checkable" id="datatable">
             <thead>
               <tr style="text-align: center;">
-                <th>data</th>
+                <th>No</th>
                 <th>Aksi</th>
-                <th>data</th>
+                <th>Nama Lengkap</th>
+                <th>NIK</th>
+                <th>Umur</th>
+                <th>Jenis Kelamin</th>
+                <th>Penyandang difabilitas</th>
+                <th>Keterangan</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td style="text-align: center;">data</td>
-                <td>
-                  <div class="d-flex">
-                    <a class="btn btn-sm btn-icon btn-clean" title="Ubah" href="<?= route_to('validas_usia_edit', 1); ?>">
-                      <i class="far fa-edit fa-sm"></i>
-                    </a>
-                    <form action="<?= route_to('validas_usia_delete', 1); ?>" method="post" class="d-inline">
-                      <input type="hidden" name="_method" value="DELETE">
-                      <?= csrf_field(); ?>
-                      <button type="submit" title="Hapus" onclick="return confirm('yakin dihapus?')" class="btn btn-sm btn-icon btn-clean">
-                        <i class="far fa-trash fa-sm"></i>
-                      </button>
-                    </form>
-                  </div>
-                </td>
-                <td>data</td>
-              </tr>
+              <?php
+              $no = 1;
+              foreach ($difabilitas as $data) : ?>
+                <tr>
+                  <td style="text-align: center;"><?= $no++; ?></td>
+                  <td>
+                    <div class="d-flex">
+                      <a class="btn btn-sm btn-icon btn-clean" title="Ubah" href="<?= route_to('data_terpadu_difabilitas_edit',$data->id); ?>">
+                        <i class="far fa-edit fa-sm"></i>
+                      </a>
+                      <form action="<?= route_to('data_terpadu_difabilitas_delete',$data->id); ?>" method="post" class="d-inline">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <?= csrf_field(); ?>
+                        <button type="submit" title="Hapus" onclick="return confirm('yakin dihapus?')" class="btn btn-sm btn-icon btn-clean">
+                          <i class="far fa-trash fa-sm"></i>
+                        </button>
+                      </form>
+                    </div>
+                  </td>
+                  <td><?= esc($penduduk->getPenduduk($data->penduduk_id)->nama_lengkap); ?></td>
+                  <td><?= esc($penduduk->getPenduduk($data->penduduk_id)->no_nik); ?></td>
+                  <td><?= esc($penduduk->getPenduduk($data->penduduk_id)->umur); ?> tahun</td>
+                  <td><?= esc($penduduk->getPenduduk($data->penduduk_id)->jenis_kelamin); ?></td>
+                  <td><?= $data->penyandang_difabilitas; ?></td>
+                  <td><?= $data->keterangan; ?></td>
+                </tr>
+              <?php endforeach ?>
             </tbody>
           </table>
           <!--end: Datatable-->

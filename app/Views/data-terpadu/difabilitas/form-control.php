@@ -13,7 +13,11 @@
     </select>
   </div>
   <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
-    <label>Alasan Menganggur</label>
-    <textarea rows="5" name="alasan_menganggur" class="form-control" placeholder="Tulis alasannya .."><?= old('alasan_menganggur') ?? $tuna_karya->alasan_menganggur; ?></textarea>
+    <label>Penyandang Difabilitas</label>
+    <input name="penyandang_difabilitas" class="form-control" placeholder="cth: kursi roda" value="<?= old('penyandang_difabilitas') ?? $difabilitas->penyandang_difabilitas; ?>">
+  </div>
+  <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
+    <label>Keterangan</label>
+    <textarea rows="5" name="keterangan" class="form-control" placeholder="cth: difabilitas sejak lahir"><?= old('keterangan') ?? $difabilitas->keterangan; ?></textarea>
   </div>
 </div>
