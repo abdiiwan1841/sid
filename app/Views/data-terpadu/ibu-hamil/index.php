@@ -94,10 +94,10 @@
                   <td style="text-align: center;"><?= $no++; ?></td>
                   <td>
                     <div class="d-flex">
-                      <a class="btn btn-sm btn-icon btn-clean" title="Ubah" href="<?= route_to('data_terpadu_ibu_hamil_edit', 1); ?>">
+                      <a class="btn btn-sm btn-icon btn-clean" title="Ubah" href="<?= route_to('data_terpadu_ibu_hamil_edit', $data->id); ?>">
                         <i class="far fa-edit fa-sm"></i>
                       </a>
-                      <form action="<?= route_to('data_terpadu_ibu_hamil_delete', 1); ?>" method="post" class="d-inline">
+                      <form action="<?= route_to('data_terpadu_ibu_hamil_delete', $data->id); ?>" method="post" class="d-inline">
                         <input type="hidden" name="_method" value="DELETE">
                         <?= csrf_field(); ?>
                         <button type="submit" title="Hapus" onclick="return confirm('yakin dihapus?')" class="btn btn-sm btn-icon btn-clean">
@@ -108,7 +108,7 @@
                   </td>
                   <td><?= esc($penduduk->getPenduduk($data->penduduk_id)->nama_lengkap); ?></td>
                   <td><?= esc($penduduk->getPenduduk($data->penduduk_id)->no_nik); ?></td>
-                  <td><?= esc($penduduk->getPenduduk($data->penduduk_id)->umur); ?></td>
+                  <td><?= esc($penduduk->getPenduduk($data->penduduk_id)->umur); ?> tahun</td>
                   <td><?= esc($data->usia_kehamilan); ?></td>
                 </tr>
               <?php endforeach ?>
