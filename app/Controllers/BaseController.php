@@ -55,9 +55,9 @@ class BaseController extends Controller
 		$this->group = new \Myth\Auth\Authorization\GroupModel;
 		// Kependudukan Model
 		$this->kependudukan = new \App\Models\Kependudukan\Kependudukan;
-		$this->keluarga = new \App\Models\kependudukan\Keluarga;
-		$this->dokumenKependudukan = new \App\Models\kependudukan\DokumenKependudukan;
-		$this->dataPeristiwa = new \App\Models\kependudukan\DataPeristiwa;
+		$this->keluarga = new \App\Models\Kependudukan\Keluarga;
+		$this->dokumenKependudukan = new \App\Models\Kependudukan\DokumenKependudukan;
+		$this->dataPeristiwa = new \App\Models\Kependudukan\DataPeristiwa;
 		// Profil Wilayah Model
 		$this->dataWilayah = new \App\Models\ProfilWilayah\DataWilayah;
 		$this->dataDesa = new \App\Models\ProfilWilayah\DataDesa;
