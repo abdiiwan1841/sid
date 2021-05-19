@@ -109,5 +109,6 @@ class BaseController extends Controller
 
 		// ADMIN WEB
 		$this->artikel = new \App\Models\Adminweb\Artikel;
+		$this->menuBar = new \App\Models\Adminweb\MenuBar;
 	}
 }
