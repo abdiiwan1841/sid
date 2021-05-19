@@ -98,4 +98,10 @@ if (!function_exists('has_permission')) {
 		$time = Time::parse($text);
 		return esc($time->toLocalizedString('d MMMM yyyy'));
 	}
+
+	function humanize($text)
+	{
+		$time = Time::parse($text, 'Asia/Jakarta');
+		return $time->humanize();
+	}
 }

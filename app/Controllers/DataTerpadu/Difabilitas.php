@@ -61,7 +61,7 @@ class Difabilitas extends BaseController
 	public function update($id = null)
 	{
 		if (!$this->validate($this->difabilitas->getValidationRules())) {
-			return redirect()->to(route_to('data_terpadu_difabilitas_edit', 1))->withInput();
+			return redirect()->back()->withInput();
 		}
 		$data = $this->request->getPost();
 		$this->difabilitas->save($data);

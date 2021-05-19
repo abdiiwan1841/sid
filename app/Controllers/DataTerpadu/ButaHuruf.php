@@ -61,7 +61,7 @@ class ButaHuruf extends BaseController
 	public function update($id = null)
 	{
 		if (!$this->validate($this->butaHuruf->getValidationRules())) {
-			return redirect()->to(route_to('data_terpadu_buta_huruf_edit', 1))->withInput();
+			return redirect()->back()->withInput();
 		}
 		$data = $this->request->getPost();
 		$this->butaHuruf->save($data);

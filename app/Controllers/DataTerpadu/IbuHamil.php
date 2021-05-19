@@ -61,7 +61,7 @@ class IbuHamil extends BaseController
 	public function update($id = null)
 	{
 		if (!$this->validate($this->ibuHamil->getValidationRules())) {
-			return redirect()->to(route_to('data_terpadu_ibu_hamil_edit', 1))->withInput();
+			return redirect()->back()->withInput();
 		}
 		$data = $this->request->getPost();
 		$this->ibuHamil->save($data);

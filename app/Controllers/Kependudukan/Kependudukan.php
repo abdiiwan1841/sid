@@ -66,8 +66,10 @@ class Kependudukan extends BaseController
     $data = $this->request->getPost();
     $data['id'] = $id;
     if ($foto->getError() !== 4) {
-      if ($data['fotoLama'] != 'default.jpg') {
-        unlink("img/penduduk/{$data['fotoLama']}");
+      if (file_exists('img/penduduk/' . $data['fotoLama'])) {
+        if ($data['fotoLama'] != 'default.jpg') {
+          unlink("img/penduduk/{$data['fotoLama']}");
+        }
       }
       $data['foto'] = $foto->getName();
       $this->kependudukan->save($data);
@@ -81,7 +83,9 @@ class Kependudukan extends BaseController
   public function delete($id = null)
   {
     $data = $this->kependudukan->find($id);
-    if ($data->foto !== 'default.jpg') unlink("img/penduduk/{$data->foto}");
+    if (file_exists('img/penduduk/' . $data->foto)) {
+      if ($data->foto !== 'default.jpg') unlink("img/penduduk/{$data->foto}");
+    }
     $this->kependudukan->delete($id);
     return redirect()->to('/kependudukan')->with('berhasil', 'Penduduk berhasil dihapus!');
   }

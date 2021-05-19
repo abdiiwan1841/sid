@@ -436,6 +436,17 @@ $routes->group('statistik', ['namespace' => '\App\Controllers\Statistik', 'filte
 	$routes->put('apbd_desa/(:num)', 'ApbdDesa::update/$1', ['as' => 'statistik_apbd_desa_update']);
 	$routes->delete('apbd_desa/(:num)', 'ApbdDesa::delete/$1', ['as' => 'statistik_apbd_desa_delete']);
 });
+// ADMIN WEB
+$routes->group('admin-web', ['namespace' => '\App\Controllers\AdminWeb', 'filter' => 'role:admin'], function ($routes) {
+	$routes->get('', 'Artikel::index', ['as' => 'artikel']);
+	$routes->get('new', 'Artikel::new', ['as' => 'artikel_new']);
+	$routes->post('', 'Artikel::create', ['as' => 'artikel_create']);
+	$routes->get('(:num)/edit', 'Artikel::edit/$1', ['as' => 'artikel_edit']);
+	$routes->put('(:num)', 'Artikel::update/$1', ['as' => 'artikel_update']);
+	$routes->delete('(:num)', 'Artikel::delete/$1', ['as' => 'artikel_delete']);
+});
+
+
 
 $routes->group('manage', ['filter' => 'role:admin'], function ($routes) {
 	$routes->get('', 'Manage::index');
