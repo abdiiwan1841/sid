@@ -104,4 +104,15 @@ if (!function_exists('has_permission')) {
 		$time = Time::parse($text, 'Asia/Jakarta');
 		return $time->humanize();
 	}
+	
+	function time_usia_kehamilan($text)
+	{
+		$time = Time::parse($text, 'Asia/Jakarta');
+		$now = Time::now();
+		$diff = $time->difference($now);
+		//dd($diff->getDays());
+		$hari = ($diff->getDays() > 30) ? $diff->getDays() - ($diff->getDays() -30) - $time->getDay() : $diff->getDays();
+		$bulan = $diff->getMonths();
+	  return "{$bulan} bulan {$hari} hari";
+	}
 }

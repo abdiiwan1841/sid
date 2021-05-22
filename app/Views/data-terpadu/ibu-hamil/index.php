@@ -109,7 +109,7 @@
                   <td><?= esc($penduduk->getPenduduk($data->penduduk_id)->nama_lengkap); ?></td>
                   <td><?= esc($penduduk->getPenduduk($data->penduduk_id)->no_nik); ?></td>
                   <td><?= esc($penduduk->getPenduduk($data->penduduk_id)->umur); ?> tahun</td>
-                  <td><?= esc($data->usia_kehamilan); ?></td>
+                  <td><?= time_usia_kehamilan($data->usia_kehamilan); ?></td>
                 </tr>
               <?php endforeach ?>
             </tbody>
