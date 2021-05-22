@@ -52,7 +52,7 @@
           $db = \Config\Database::connect();
           $menu = $db->table('user_menu')->select('user_menu.id,menu,icon,slug')
             ->join('user_access_menu', 'user_menu.id = user_access_menu.menu_id')
-            ->where(['user_access_menu.group_id' => user_id()])
+            ->where(['user_access_menu.group_id' => user_id(), 'user_menu.menu !=' => 'Validasi'])
             ->get()->getResultObject();
 
           foreach ($menu as $m) : ?>

@@ -17,17 +17,17 @@
             <span class="card-icon">
               <i class="flaticon2-favourite text-primary"></i>
             </span>
-            <h3 class="card-label">Ubah data : <?= $artikel->judul; ?></h3>
+            <h3 class="card-label">Ubah data : <?= $menu_bar->nama; ?></h3>
           </div>
         </div>
         <div class="card-body">
           <?= $validation->listErrors(); ?>
-          <form class="form" id="kt_form_2" action="<?= route_to('artikel_update', $artikel->id); ?>" method="POST" autocomplete="off" enctype="multipart/form-data">
+          <form class="form" id="kt_form_2" action="<?= route_to('admin_web_menu_bar_update', $menu_bar->id); ?>" method="POST" autocomplete="off" enctype="multipart/form-data">
             <input type="hidden" name="_method" value="PUT">
-            <input type="hidden" name="id" value="<?= $artikel->id; ?>">
-            <input type="hidden" name="thumbnailLama" value="<?= $artikel->thumbnail; ?>">
+            <input type="hidden" name="id" value="<?= $menu_bar->id; ?>">
+            <input type="hidden" name="fotoLama" value="<?= $menu_bar->foto; ?>">
             <?= csrf_field(); ?>
-            <?= $this->include('admin-web/form-control'); ?>
+            <?= $this->include('admin-web/menu-bar/form-control'); ?>
 
           </form>
         </div>

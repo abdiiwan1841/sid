@@ -17,7 +17,7 @@ class kependudukan extends Model
     //     'required' => 'Keluarga harus diisi',
     //   ],
     // ],
-    'foto' => 'is_image[foto]|mime_in[foto,image/png,image/jpg,image/jpeg]|ext_in[foto,png,jpg,jpeg]',
+    'foto' => 'is_image[foto]|mime_in[foto,image/png,image/jpg,image/jpeg]|ext_in[foto,png,jpg,jpeg]|max_size[foto,3000]',
     'nama_lengkap' => [
       'rules'  => 'required|string',
       'errors' => [

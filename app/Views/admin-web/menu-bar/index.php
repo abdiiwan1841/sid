@@ -29,44 +29,8 @@
             <h3 class="card-label">Data <?= $title; ?></h3>
           </div>
           <div class="card-toolbar">
-            <!--begin::Dropdown-->
-            <div class="dropdown dropdown-inline mr-2">
-              <button type="button" class="btn btn-light-primary font-weight-bolder dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="la la-upload"></i>Import</button>
-              <!--begin::Dropdown Menu-->
-              <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                <ul class="nav flex-column nav-hover">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon la la-file-excel-o"></i>
-                      <span class="nav-text">Excel</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <!--end::Dropdown Menu-->
-            </div>
-            <!--end::Dropdown-->
-            <!--begin::Dropdown-->
-            <div class="dropdown dropdown-inline mr-2">
-              <button type="button" class="btn btn-light-primary font-weight-bolder dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="la la-download"></i>Export</button>
-              <!--begin::Dropdown Menu-->
-              <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                <ul class="nav flex-column nav-hover">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon la la-file-pdf-o"></i>
-                      <span class="nav-text">PDF</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <!--end::Dropdown Menu-->
-            </div>
-            <!--end::Dropdown-->
             <!--begin::Button-->
-            <a href="<?= route_to('artikel_new', 1); ?>" class="btn btn-primary font-weight-bolder mt-2 mt-md-0">
+            <a href="<?= route_to('admin_web_menu_bar_new'); ?>" class="btn btn-primary font-weight-bolder mt-2 mt-md-0">
               <i class="la la-plus"></i>Tambah
             </a>
             <!--end::Button-->
@@ -80,24 +44,27 @@
               <tr style="text-align: center;">
                 <th>No</th>
                 <th>Aksi</th>
-                <th>Judul</th>
-                <th>Thumbnail</th>
-                <th>Text</th>
-                <th>Dibuat pada</th>
+                <th>Nama menu</th>
+                <th>Foto</th>
+                <th>URL</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
               <?php
               $no = 1;
-              foreach ($artikel as $data) : ?>
+              foreach ($menu_bar as $data) : ?>
                 <tr>
                   <td style="text-align: center;"><?= $no++; ?></td>
                   <td>
                     <div class="d-flex">
-                      <a class="btn btn-sm btn-icon btn-clean" title="Ubah" href="<?= route_to('artikel_edit', $data->id); ?>">
+                      <a class="btn btn-sm btn-icon btn-clean" title="Lihat" href="<?= env('URLFrontEnd') . '/' . $data->url;; ?>">
+                        <i class="far fa-eye fa-sm"></i>
+                      </a>
+                      <a class="btn btn-sm btn-icon btn-clean" title="Ubah" href="<?= route_to('admin_web_menu_bar_edit', $data->id); ?>">
                         <i class="far fa-edit fa-sm"></i>
                       </a>
-                      <form action="<?= route_to('artikel_delete', $data->id); ?>" method="post" class="d-inline">
+                      <form action="<?= route_to('admin_web_menu_bar_delete', $data->id); ?>" method="post" class="d-inline">
                         <input type="hidden" name="_method" value="DELETE">
                         <?= csrf_field(); ?>
                         <button type="submit" title="Hapus" onclick="return confirm('yakin dihapus?')" class="btn btn-sm btn-icon btn-clean">
@@ -106,14 +73,21 @@
                       </form>
                     </div>
                   </td>
-                  <td><?= esc($data->judul); ?></td>
+                  <td><?= esc($data->nama); ?></td>
                   <td>
-                    <?php if ($data->thumbnail) : ?>
-                      <img src="/img/artikel/<?= esc($data->thumbnail); ?>" alt="<?= esc($data->thumbnail); ?>" class="rounded" width="120" height="120">
+                    <img src="/img/menu-bar/<?= esc($data->foto); ?>" alt="<?= esc($data->foto); ?>" class="rounded img-fluid">
+                  </td>
+                  <td><?= esc($data->url); ?></td>
+                  <td>
+                    <?php if ($data->is_active == 1) : ?> <span class="label label-lg font-weight-bold label-light-success label-inline">
+                        Aktif
+                      </span>
+                    <?php else : ?>
+                      <span class="label label-lg font-weight-bold label-light-danger label-inline">
+                        Tidak aktif
+                      </span>
                     <?php endif ?>
                   </td>
-                  <td><?= esc($data->text); ?></td>
-                  <td><?= humanize($data->created_at); ?></td>
                 </tr>
               <?php endforeach ?>
             </tbody>

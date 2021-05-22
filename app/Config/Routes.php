@@ -445,12 +445,12 @@ $routes->group('admin-web', ['namespace' => '\App\Controllers\AdminWeb', 'filter
 	$routes->put('(:num)', 'Artikel::update/$1', ['as' => 'artikel_update']);
 	$routes->delete('(:num)', 'Artikel::delete/$1', ['as' => 'artikel_delete']);
 	// Menu Bar
-	$routes->get('menu-bar', 'MenuBar::index', ['as' => 'admin-web_menu_bar']);
-	$routes->get('menu-bar/new', 'MenuBar::new', ['as' => 'admin-web_menu_bar_new']);
-	$routes->post('menu-bar/', 'MenuBar::create', ['as' => 'admin-web_menu_bar_create']);
-	$routes->get('menu-bar/(:num)/edit', 'MenuBar::edit/$1', ['as' => 'admin-web_menu_bar_edit']);
-	$routes->put('menu-bar/(:num)', 'MenuBar::update/$1', ['as' => 'admin-web_menu_bar_update']);
-	$routes->delete('menu-bar/(:num)', 'MenuBar::delete/$1', ['as' => 'admin-web_menu_bar_delete']);
+	$routes->get('menu-bar', 'MenuBar::index', ['as' => 'admin_web_menu_bar']);
+	$routes->get('menu-bar/new', 'MenuBar::new', ['as' => 'admin_web_menu_bar_new']);
+	$routes->post('menu-bar/', 'MenuBar::create', ['as' => 'admin_web_menu_bar_create']);
+	$routes->get('menu-bar/(:num)/edit', 'MenuBar::edit/$1', ['as' => 'admin_web_menu_bar_edit']);
+	$routes->put('menu-bar/(:num)', 'MenuBar::update/$1', ['as' => 'admin_web_menu_bar_update']);
+	$routes->delete('menu-bar/(:num)', 'MenuBar::delete/$1', ['as' => 'admin_web_menu_bar_delete']);
 });
 
 

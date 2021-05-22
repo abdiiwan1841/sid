@@ -22,9 +22,9 @@
         </div>
         <div class="card-body">
           <?= $validation->listErrors(); ?>
-          <form class="form" id="kt_form_2" action="<?= route_to('artikel_create'); ?>" method="POST" autocomplete="off" enctype="multipart/form-data">
+          <form class="form" id="kt_form_2" action="<?= route_to('admin_web_menu_bar_create'); ?>" method="POST" autocomplete="off" enctype="multipart/form-data">
             <?= csrf_field(); ?>
-            <?= $this->include('admin-web/form-control'); ?>
+            <?= $this->include('admin-web/menu-bar/form-control'); ?>
           </form>
         </div>
       </div>

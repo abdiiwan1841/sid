@@ -10,7 +10,7 @@ class MenuBar extends BaseController
 	{
 		$data = [
 			'title' => 'Menu Bar',
-			'Menu Bar' => $this->menuBar->orderBy('id', 'DESC')->findAll(),
+			'menu_bar' => $this->menuBar->orderBy('id', 'DESC')->findAll(),
 		];
 		return view('admin-web/menu-bar/index', $data);
 	}
@@ -39,7 +39,6 @@ class MenuBar extends BaseController
 			return redirect()->back()->withInput();
 		}
 		$data = $this->request->getPost();
-		$data['slug'] = url_title($data['judul']);
 		$foto = $this->request->getFile('foto');
 		if ($foto->getError() !== 4) {
 			$data['foto'] = $foto->getName();
@@ -55,7 +54,7 @@ class MenuBar extends BaseController
 	{
 		$menu_bar = $this->menuBar->find($id);
 		$data = [
-			'title' => 'Ubah menu_bar',
+			'title' => 'Ubah Menu bar',
 			'validation' => $this->validation,
 			'menu_bar' => $menu_bar,
 		];
@@ -64,11 +63,15 @@ class MenuBar extends BaseController
 
 	public function update($id = null)
 	{
+		$data = $this->request->getPost();
+		if ($data['fotoLama'] != '') {
+			$this->menuBar->setValidationRules([
+				'foto' => 'is_image[foto]|mime_in[foto,image/png,image/jpg,image/jpeg,image/svg+xml]|ext_in[foto,png,jpg,jpeg,svg]|max_size[foto,3000]'
+			]);
+		}
 		if (!$this->validate($this->menuBar->getValidationRules())) {
 			return redirect()->back()->withInput();
 		}
-		$data = $this->request->getPost();
-		$data['slug'] = url_title($data['judul']);
 		$foto = $this->request->getFile('foto');
 		if ($foto->getError() !== 4) {
 			$data['foto'] = $foto->getName();

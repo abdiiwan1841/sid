@@ -11,7 +11,7 @@ class Artikel extends Model
 	protected $allowedFields        = ['judul', 'slug', 'thumbnail', 'text'];
 	protected $useTimestamps        = true;
 	protected $validationRules      = [
-		'thumbnail' => 'is_image[thumbnail]|mime_in[thumbnail,image/png,image/jpg,image/jpeg]|ext_in[thumbnail,png,jpg,jpeg]',
+		'thumbnail' => 'is_image[thumbnail]|mime_in[thumbnail,image/png,image/jpg,image/jpeg]|ext_in[thumbnail,png,jpg,jpeg]|max_size[thumbnail,3000]',
 		'judul' => 'required',
 		'text' => 'required',
 	];
