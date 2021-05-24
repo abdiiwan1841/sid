@@ -24,11 +24,26 @@ class Lahan extends BaseController
 
 	public function new()
 	{
-		$data = [
-			'title' => 'Tambah Statistik Lahan',
-			'validation' => $this->validation,
-		];
-		return view('statistik/new', $data);
+		return json_encode(
+			[
+				'name' => 'Luas Lahan (m2)',
+				'data' => [
+					[
+						"x" => 2015,
+						"y" => 334
+					],
+					[
+						"x" => 2016,
+						"y" => 304
+					],
+					[
+						"x" => 2017,
+						"y" => null
+					],
+				],
+
+			]
+		);
 	}
 
 	public function create()

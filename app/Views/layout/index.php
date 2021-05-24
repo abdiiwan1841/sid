@@ -126,6 +126,7 @@
 	<script src="/assets/js/pages/crud/file-upload/image-input.js"></script>
 	<script src="/assets/js/pages/crud/datatables/data-sources/ajax-client-side.js"></script>
 	<script src="/assets/js/pages/crud/forms/editors/summernote.js"></script>
+	<script src="/assets/js/pages/features/charts/apexcharts.js"></script>
 	<!--end::Page Scripts-->
 	<!-- <script src="assets/js/main.js"></script> -->
 

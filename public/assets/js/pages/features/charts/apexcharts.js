@@ -81,6 +81,13 @@ var KTApexChartsDemo = function () {
 
 		var chart = new ApexCharts(document.querySelector(apexChart), options);
 		chart.render();
+		$.getJSON(URL_JSON_CHART, function(response) {
+			console.log(response);
+		chart.updateSeries([{
+			name: response.name,
+			data: response.data
+			}])
+		});
 	}
 
 	var _demo2 = function () {
@@ -120,17 +127,10 @@ var KTApexChartsDemo = function () {
 	}
 
 	var _demo3 = function () {
-		const apexChart = "#chart_3";
+		const apexChart = "#chart";
 		var options = {
 			series: [{
-				name: 'Net Profit',
-				data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-			}, {
-				name: 'Revenue',
-				data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-			}, {
-				name: 'Free Cash Flow',
-				data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
+			name: 'Laki-laki',
 			}],
 			chart: {
 				type: 'bar',
@@ -139,7 +139,7 @@ var KTApexChartsDemo = function () {
 			plotOptions: {
 				bar: {
 					horizontal: false,
-					columnWidth: '55%',
+					columnWidth: '50%',
 					endingShape: 'rounded'
 				},
 			},
@@ -151,21 +151,10 @@ var KTApexChartsDemo = function () {
 				width: 2,
 				colors: ['transparent']
 			},
-			xaxis: {
-				categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-			},
-			yaxis: {
-				title: {
-					text: '$ (thousands)'
-				}
-			},
-			fill: {
-				opacity: 1
-			},
 			tooltip: {
 				y: {
 					formatter: function (val) {
-						return "$ " + val + " thousands"
+						return val
 					}
 				}
 			},
@@ -174,6 +163,14 @@ var KTApexChartsDemo = function () {
 
 		var chart = new ApexCharts(document.querySelector(apexChart), options);
 		chart.render();
+
+		$.getJSON(URL_JSON_CHART, function(response) {
+			console.log(response);
+			chart.updateSeries([{
+				name: response.name,
+				data: response.data
+			}])
+		});
 	}
 
 	var _demo4 = function () {
