@@ -28,7 +28,7 @@
           <div class="card-body">
             <!--begin::Chart-->
             <script>
-              const URL_JSON_CHART = 'http://localhost:8080/statistik/new';
+              const URL_JSON_CHART = '<?= base_url(); ?>/statistik/new';
             </script>
             <div id="chart"></div>
             <!--end::Chart-->
