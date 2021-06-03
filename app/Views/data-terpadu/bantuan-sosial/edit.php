@@ -22,11 +22,11 @@
         </div>
         <div class="card-body">
           <?= $validation->listErrors(); ?>
-          <form class="form" id="kt_form_2" action="<?= route_to('data_terpadu_tuna_karya_update', $tuna_karya->id); ?>" method="POST" autocomplete="off">
+          <form class="form" id="kt_form_2" action="<?= route_to('data_terpadu_bantuan_sosial_update', $bantuan_sosial->id); ?>" method="POST" autocomplete="off">
             <input type="hidden" name="_method" value="PUT">
-            <input type="hidden" name="id" value="<?= $tuna_karya->id; ?>">
+            <input type="hidden" name="id" value="<?= $bantuan_sosial->id; ?>">
             <?= csrf_field(); ?>
-            <?= $this->include('data-terpadu/tuna-karya/form-control'); ?>
+            <?= $this->include('data-terpadu/bantuan-sosial/form-control'); ?>
             <div class="row">
               <div class="col-lg-12">
                 <button type="submit" class="btn btn-primary font-weight-bold mr-2">Simpan</button>

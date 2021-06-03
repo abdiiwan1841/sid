@@ -13,7 +13,15 @@
     </select>
   </div>
   <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
-    <label>Alasan Menganggur</label>
-    <textarea rows="5" name="alasan_menganggur" class="form-control" placeholder="Tulis alasannya .."><?= old('alasan_menganggur') ?? $tuna_karya->alasan_menganggur; ?></textarea>
+    <label>Jenis Bantuan</label>
+    <input type="text" name="jenis_bantuan" class="form-control" placeholder="cth: Beras, Uang" value="<?= old('jenis_bantuan') ?? $bantuan_sosial->jenis_bantuan; ?>">
+  </div>
+  <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
+    <label>Total bantuan</label>
+    <input type="text" name="total" class="form-control" placeholder="cth: 5kg, Rp.1.000.000" value="<?= old('total') ?? $bantuan_sosial->total; ?>">
+  </div>
+  <div class="col-md-6 col-lg-4 mt-3">
+    <label>Keterangan</label>
+    <textarea rows="5" name="keterangan" class="form-control" placeholder="Tulis keterangan (opsional) ..."><?= old('keterangan') ?? $bantuan_sosial->keterangan; ?></textarea>
   </div>
 </div>

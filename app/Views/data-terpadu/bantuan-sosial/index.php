@@ -66,7 +66,7 @@
             </div>
             <!--end::Dropdown-->
             <!--begin::Button-->
-            <a href="<?= route_to('data_terpadu_bantuan_sosial_new', 1); ?>" class="btn btn-primary font-weight-bolder mt-2 mt-md-0">
+            <a href="<?= route_to('data_terpadu_bantuan_sosial_new'); ?>" class="btn btn-primary font-weight-bolder mt-2 mt-md-0">
               <i class="la la-plus"></i>Tambah
             </a>
             <!--end::Button-->

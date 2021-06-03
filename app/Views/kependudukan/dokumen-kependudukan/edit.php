@@ -17,16 +17,19 @@
             <span class="card-icon">
               <i class="flaticon2-favourite text-primary"></i>
             </span>
-            <h3 class="card-label">Form <?= $title; ?></h3>
+            <h3 class="card-label">Ubah Data : <?= $data_penduduk->nama_lengkap ?></h3>
           </div>
         </div>
+
         <div class="card-body">
           <?= $validation->listErrors(); ?>
-          <form class="form" id="kt_form_2" action="<?= route_to('data_terpadu_bantuan_sosial_create'); ?>" method="POST" autocomplete="off">
+          <form class="form" id="kt_form_2" action="<?= route_to("kependudukan_dokumen_kependudukan_update", $dokumen_kependudukan->id); ?>" method="POST" autocomplete="off" enctype="multipart/form-data">
+            <input type="hidden" value="PUT" name="_method">
+            <input type="hidden" value="<?= $dokumen_kependudukan->id; ?>" name="id">
             <?= csrf_field(); ?>
-            <?= $this->include('data-terpadu/bantuan-sosial/form-control'); ?>
-            <div class="row">
-              <div class="col-lg-12">
+            <?= $this->include('kependudukan/dokumen-kependudukan/form-control'); ?>
+            <div class="row justify-content-center">
+              <div class="col-lg-12 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary font-weight-bold mr-2">Simpan</button>
               </div>
             </div>

@@ -22,11 +22,11 @@
         </div>
         <div class="card-body">
           <?= $validation->listErrors(); ?>
-          <form class="form" id="kt_form_2" action="<?= route_to('data_terpadu_bantuan_sosial_create'); ?>" method="POST" autocomplete="off">
+          <form class="form" id="kt_form_2" action="<?= route_to("kependudukan_dokumen_kependudukan_create"); ?>" method="POST" autocomplete="off" enctype="multipart/form-data">
             <?= csrf_field(); ?>
-            <?= $this->include('data-terpadu/bantuan-sosial/form-control'); ?>
+            <?= $this->include('kependudukan/dokumen-kependudukan/form-control'); ?>
             <div class="row">
-              <div class="col-lg-12">
+              <div class="col-lg-12 d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary font-weight-bold mr-2">Simpan</button>
               </div>
             </div>

@@ -9,7 +9,7 @@ class BantuanSosial extends BaseController
 	public function index()
 	{
 		$data = [
-			'title' => 'Tuna Karya',
+			'title' => 'Bantuan Sosial',
 			'bantuan_sosial' => $this->bantuanSosial->orderBy('id', 'DESC')->findAll(),
 			'penduduk' => $this->kependudukan,
 		];
@@ -19,7 +19,7 @@ class BantuanSosial extends BaseController
 	public function show($id = null)
 	{
 		$data = [
-			'title' => 'Tuna Karya'
+			'title' => 'Bantuan Sosial'
 		];
 		return view('data-terpadu/bantuan-sosial/show', $data);
 	}
@@ -27,7 +27,7 @@ class BantuanSosial extends BaseController
 	public function new()
 	{
 		$data = [
-			'title' => 'Tambah Data Tuna Karya',
+			'title' => 'Tambah Data Bantuan Sosial',
 			'validation' => $this->validation,
 			'penduduk' => $this->kependudukan->findAll(),
 			'bantuan_sosial' => $this->bantuanSosial,
@@ -49,7 +49,7 @@ class BantuanSosial extends BaseController
 	{
 		$bantuan_sosial = $this->bantuanSosial->find($id);
 		$data = [
-			'title' => 'Ubah Tuna Karya',
+			'title' => 'Ubah Bantuan Sosial',
 			'validation' => $this->validation,
 			'bantuan_sosial' => $bantuan_sosial,
 			'penduduk' => $this->kependudukan->where('id !=', $bantuan_sosial->penduduk_id ?? 1)->findAll(),
