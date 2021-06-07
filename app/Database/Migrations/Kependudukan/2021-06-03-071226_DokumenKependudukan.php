@@ -23,7 +23,7 @@ class DokumenKependudukan extends Migration
 				'type'       => 'INT',
 				'constraint' => 255,
 			],
-			'fotokopi_ijazah'       => [
+			'fotokopi_ktp'       => [
 				'type'       => 'VARCHAR',
 				'constraint' => 255,
 			],

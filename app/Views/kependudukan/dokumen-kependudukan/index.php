@@ -108,8 +108,12 @@
                   </td>
                   <td><?= esc($penduduk->getPenduduk($data->penduduk_id)->nama_lengkap); ?></td>
                   <td><?= esc($data->no_akta); ?></td>
-                  <td><?= esc($data->fotokopi_ktp); ?></td>
-                  <td><?= ttl($data->fotokopi_ijazah); ?></td>
+                  <td>
+                    <img src="/img/ktp/<?= esc($data->fotokopi_ktp); ?>" alt="<?= esc($data->fotokopi_ktp); ?>" class="rounded" width="120" height="120">
+                  </td>
+                  <td>
+                    <img src="/img/ijazah/<?= esc($data->fotokopi_ijazah); ?>" alt="<?= esc($data->fotokopi_ijazah); ?>" class="rounded img-fluid">
+                  </td>
                 </tr>
               <?php endforeach ?>
             </tbody>

@@ -26,6 +26,8 @@
           <form class="form" id="kt_form_2" action="<?= route_to("kependudukan_dokumen_kependudukan_update", $dokumen_kependudukan->id); ?>" method="POST" autocomplete="off" enctype="multipart/form-data">
             <input type="hidden" value="PUT" name="_method">
             <input type="hidden" value="<?= $dokumen_kependudukan->id; ?>" name="id">
+            <input type="hidden" name="fotokopi_ktpLama" value="<?= $dokumen_kependudukan->fotokopi_ktp; ?>">
+            <input type="hidden" name="fotokopi_ijazahLama" value="<?= $dokumen_kependudukan->fotokopi_ijazah; ?>">
             <?= csrf_field(); ?>
             <?= $this->include('kependudukan/dokumen-kependudukan/form-control'); ?>
             <div class="row justify-content-center">

@@ -41,7 +41,17 @@ class DokumenKependudukan extends BaseController
 			return redirect()->back()->withInput();
 		}
 		$data = $this->request->getPost();
-		$this->dokumenKependudukan->save($data);
+		$fotokopi_ktp = $this->request->getFile('fotokopi_ktp');
+		$fotokopi_ijazah = $this->request->getFile('fotokopi_ijazah');
+		if ($fotokopi_ktp->getError() !== 4 && $fotokopi_ijazah->getError() !== 4) {
+			$data['fotokopi_ktp'] = $fotokopi_ktp->getName();
+			$data['fotokopi_ijazah'] = $fotokopi_ijazah->getName();
+			$this->dokumenKependudukan->save($data);
+			$fotokopi_ktp->move('img/ktp');
+			$fotokopi_ijazah->move('img/ijazah');
+		} else {
+			$this->dokumenKependudukan->save($data);
+		}
 		return redirect()->to(route_to('kependudukan_dokumen_kependudukan'))->with('berhasil', 'Data berhasil ditambah!');
 	}
 
@@ -60,16 +70,39 @@ class DokumenKependudukan extends BaseController
 
 	public function update($id = null)
 	{
+		$this->dokumenKependudukan->setValidationRules([
+			'fotokopi_ktp' => 'is_image[fotokopi_ktp]|max_size[fotokopi_ktp,3000]',
+			'fotokopi_ijazah' => 'is_image[fotokopi_ijazah]|max_size[fotokopi_ijazah,3000]',
+		]);
 		if (!$this->validate($this->dokumenKependudukan->getValidationRules())) {
 			return redirect()->back()->withInput();
 		}
+		$fotokopi_ktp = $this->request->getFile('fotokopi_ktp');
+		$fotokopi_ijazah = $this->request->getFile('fotokopi_ijazah');
 		$data = $this->request->getPost();
+		if ($fotokopi_ktp->getError() !== 4) {
+			if (file_exists('img/ktp/' . $data['fotokopi_ktpLama'])) {
+				unlink("img/ktp/{$data['fotokopi_ktpLama']}");
+			}
+			$fotokopi_ktp->move('img/ktp', $fotokopi_ktp->getRandomName());
+			$data['fotokopi_ktp'] = $fotokopi_ktp->getName();
+		}
+		if ($fotokopi_ijazah->getError() !== 4) {
+			if (file_exists('img/ijazah/' . $data['fotokopi_ijazahLama'])) {
+				unlink("img/ijazah/{$data['fotokopi_ijazahLama']}");
+			}
+			$fotokopi_ijazah->move('img/ijazah', $fotokopi_ijazah->getRandomName());
+			$data['fotokopi_ijazah'] = $fotokopi_ijazah->getName();
+		}
 		$this->dokumenKependudukan->save($data);
 		return redirect()->to(route_to('kependudukan_dokumen_kependudukan'))->with('berhasil', 'Data berhasil diubah!');
 	}
 
 	public function delete($id = null)
 	{
+		$data = $this->dokumenKependudukan->find($id);
+		if (file_exists('img/ktp/' . $data->fotokopi_ktp)) unlink("img/ktp/{$data->fotokopi_ktp}");
+		if (file_exists('img/ijazah/' . $data->fotokopi_ijazah)) unlink("img/ijazah/{$data->fotokopi_ijazah}");
 		$this->dokumenKependudukan->delete($id);
 		return redirect()->to(route_to('kependudukan_dokumen_kependudukan'))->with('berhasil', 'Data berhasil dihapus!');
 	}
