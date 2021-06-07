@@ -16,7 +16,7 @@
       <?php endforeach; ?>
     </select>
   </div>
-  <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
+  <div class="col-md-6 col-lg-4 mt-3 mt-lg-0">
     <label>Jumlah RW</label>
     <input type="text" name="rw" class="form-control" value="<?= old('rw') ?? $data->rw; ?>" />
   </div>

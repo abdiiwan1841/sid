@@ -13,6 +13,7 @@ class DataDesa extends BaseController
 			'dataDesa' => $this->dataDesa->orderBy('id', 'DESC')->findAll(),
 			'da' => $this->db->table('data_desa')->select('rw')->countAll(),
 			'penduduk' => $this->kependudukan,
+			'data_desa' => $this->dataDesa,
 		];
 		return view('profil-wilayah/data-desa/index', $data);
 	}

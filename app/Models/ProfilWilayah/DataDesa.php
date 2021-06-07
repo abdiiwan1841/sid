@@ -52,4 +52,7 @@ class DataDesa extends Model
 	public function getDusun($dusun_id){
 	  return $this->find($dusun_id);
 	}
+	public function totalData($data){
+	  return $this->db->query("SELECT sum({$data}) FROM data_desa")->getRow();
+	}
 }

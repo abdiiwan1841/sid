@@ -122,11 +122,11 @@
             <tfoot>
               <tr>
                 <td colspan="4">TOTAL</td>
-                <td>kd</td>
-                <td><?= $da; ?></td>
-                <td>TOTAL</td>
-                <td>TOTAL</td>
-                <td>TOTAL</td>
+                <td><?= $data_desa->totalData('rt')->{'sum(rt)'}; ?></td>
+                <td><?= $data_desa->totalData('rw')->{'sum(rw)'}; ?></td>
+                <td><?= $data_desa->totalData('laki_laki')->{'sum(laki_laki)'}; ?></td>
+                <td><?= $data_desa->totalData('perempuan')->{'sum(perempuan)'}; ?></td>
+                <td><?= $data_desa->totalData('laki_laki')->{'sum(laki_laki)'} + $data_desa->totalData('perempuan')->{'sum(perempuan)'}; ?></td>
               </tr>
             </tfoot>
           </table>
