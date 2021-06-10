@@ -112,16 +112,16 @@ class File extends SplFileInfo
 	 */
 	public function getMimeType(): string
 	{
-		if (!function_exists('finfo_open')) {
-			// @codeCoverageIgnoreStart
 			return $this->originalMimeType ?? 'application/octet-stream';
+		// if (!function_exists('finfo_open')) {
+			// @codeCoverageIgnoreStart
 			// @codeCoverageIgnoreEnd
-		}
+	  // }
 
-		$finfo    = finfo_open(FILEINFO_MIME_TYPE);
-		$mimeType = finfo_file($finfo, $this->getPathname() ?: $this->__toString());
-		finfo_close($finfo);
-		return $mimeType;
+		// $finfo    = finfo_open(FILEINFO_MIME_TYPE);
+		// $mimeType = finfo_file($finfo, $this->getRealPath() ?: $this->__toString());
+		// finfo_close($finfo);
+		// return $mimeType;
 	}
 
 	//--------------------------------------------------------------------

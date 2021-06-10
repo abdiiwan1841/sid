@@ -106,7 +106,7 @@
                       </form>
                     </div>
                   </td>
-                  <td><?= $dataDesa->getDusun($data->dusun_id)->dusun ? '<span class="text-danger">Dusun tidak tersedia</span>' : esc($dataDesa->getDusun($data->dusun_id)->dusun) ; ?></td>
+                  <td><?= $dataDesa->getDusun($data->dusun_id)->dusun ? esc($dataDesa->getDusun($data->dusun_id)->dusun) : '<span class="text-danger">Dusun tidak tersedia</span>'; ?></td>
                   <td><?= $data->rt == '' ? '-' : esc($data->rt); ?>/<?= $data->rw == '' ? '-' : esc($data->rw); ?></td>
                   <td><?= esc($data->luas); ?></td>
                   <td><?= ttl($data->created_at); ?></td>

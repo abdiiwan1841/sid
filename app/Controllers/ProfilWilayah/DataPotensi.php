@@ -9,11 +9,13 @@ class DataPotensi extends BaseController
 	public function index()
 	{
 		$data = [
-			'title' => 'Data Potensi'
+			'title' => 'Data Potensi',
+			'dataPotensi' => $this->dataPotensi->orderBy('id', 'DESC')->findAll(),
+			'dataDesa' => $this->dataDesa,
 		];
 		return view('profil-wilayah/data-potensi/index', $data);
 	}
-	
+
 	public function show($id = null)
 	{
 		$data = [
@@ -27,43 +29,48 @@ class DataPotensi extends BaseController
 		$data = [
 			'title' => 'Tambah Data Potensi',
 			'validation' => $this->validation,
+			'data' => $this->dataPotensi,
+			'desa' =>  $this->dataDesa->findAll(),
 		];
 		return view('profil-wilayah/data-potensi/new', $data);
 	}
 
 	public function create()
 	{
-		// if (!$this->validate($this->dataPotensi->getValidationRules())) {
-		// 	return redirect()->to(route_to('profil_wilayah_data_potensi_new'))->withInput();
-		// }
-		// $data = $this->request->getPost();
-		// $this->dataPotensi->save($data);
-		return redirect()->to(route_to('profil_wilayah_data_potensi'))->with('berhasil', 'Data Potensi berhasil ditambah!');
+		if (!$this->validate($this->dataPotensi->getValidationRules())) {
+			return redirect()->back()->withInput();
+		}
+		$data = $this->request->getPost();
+		$this->dataPotensi->save($data);
+		return redirect()->to(route_to('profil_wilayah_data_potensi'))->with('berhasil', 'Data berhasil ditambah!');
 	}
 
 	public function edit($id = null)
 	{
+	  $dataPotensi = $this->dataPotensi->find($id);
 		$data = [
-			'title' => 'Ubah Data Potensi',
+			'title' => 'Ubah Data',
 			'validation' => $this->validation,
-			// 'dokumen' => $this->dataPotensi->find($id),
+			'data' => $dataPotensi,
+			'data_desa' =>  $this->dataDesa->where('id', $dataPotensi->dusun_id ?? 1)->first(),
+			'desa' =>  $this->dataDesa->where('id !=', $dataPotensi->dusun_id ?? 1)->findAll(),
 		];
 		return view('profil-wilayah/data-potensi/edit', $data);
 	}
 
 	public function update($id = null)
 	{
-		// if (!$this->validate($this->dataPotensi->getValidationRules())) {
-		// 	return redirect()->to(route_to('profil_wilayah_data_potensi_edit',1))->withInput();
-		// }
-		// $data = $this->request->getPost();
-		// $this->dataPotensi->save($data);
-		return redirect()->to(route_to('profil_wilayah_data_potensi'))->with('berhasil', 'Data Potensi berhasil diubah!');
+		$data = $this->request->getPost();
+		if (!$this->validate($this->dataPotensi->getValidationRules())) {
+			return redirect()->back()->withInput();
+		}
+		$this->dataPotensi->save($data);
+		return redirect()->to(route_to('profil_wilayah_data_potensi'))->with('berhasil', 'Data berhasil diubah!');
 	}
 
 	public function delete($id = null)
 	{
-		// $this->dataPotensi->delete($id);
-		return redirect()->to(route_to('profil_wilayah_data_potensi'))->with('berhasil', 'Data Potensi berhasil dihapus!');
+		$this->dataPotensi->delete($id);
+		return redirect()->to(route_to('profil_wilayah_data_potensi'))->with('berhasil', 'Data berhasil dihapus!');
 	}
 }

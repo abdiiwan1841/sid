@@ -71,7 +71,7 @@ class DokumenKependudukan extends BaseController
 	public function update($id = null)
 	{
 		$this->dokumenKependudukan->setValidationRules([
-			'fotokopi_ktp' => 'is_image[fotokopi_ktp]|max_size[fotokopi_ktp,3000]',
+			'fotokopi_ktp' => 'is_image[fotokopi_ktp]|mime_in[fotokopi_ktp,image/png,image/jpg,image/jpeg]|max_size[fotokopi_ktp,3000]',
 			'fotokopi_ijazah' => 'is_image[fotokopi_ijazah]|max_size[fotokopi_ijazah,3000]',
 		]);
 		if (!$this->validate($this->dokumenKependudukan->getValidationRules())) {
