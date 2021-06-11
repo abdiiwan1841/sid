@@ -33,7 +33,8 @@ $routes->setAutoRoute(true);
  */
 
 
-$routes->get('/tes', 'CommandController::index', ['filter' => 'role:admin']);
+$routes->get('/migrate', 'CommandController::index', ['filter' => 'role:admin']);
+$routes->get('/rollback', 'CommandController::rollback', ['filter' => 'role:admin']);
 
 $routes->get('/', 'Admin::index', ['filter' => 'role:admin']);
 $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {

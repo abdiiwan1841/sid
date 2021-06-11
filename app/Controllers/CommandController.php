@@ -8,6 +8,10 @@ class CommandController extends BaseController
 {
 	public function index()
 	{
+		echo command('migrate');
+	}
+	public function rollback()
+	{
 		echo command('migrate:rollback');
 	}
 }
