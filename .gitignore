@@ -2,3 +2,5 @@ writable/session/*
 writable/cache/*
 writable/debugbar/*
 writable/logs/*
+
+public/img/*

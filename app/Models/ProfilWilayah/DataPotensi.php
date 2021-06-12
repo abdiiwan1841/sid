@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class DataPotensi extends Model
 {
 	protected $DBGroup              = 'default';
-	protected $table                = 'datapotensis';
+	protected $table                = 'data_potensi';
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
