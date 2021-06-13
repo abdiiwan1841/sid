@@ -6,37 +6,49 @@ use CodeIgniter\Model;
 
 class KasUmum extends Model
 {
-	protected $DBGroup              = 'default';
-	protected $table                = 'kasumums';
-	protected $primaryKey           = 'id';
-	protected $useAutoIncrement     = true;
-	protected $insertID             = 0;
-	protected $returnType           = 'array';
-	protected $useSoftDelete        = false;
-	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $table                = 'kas_umum';
+	protected $returnType           = 'object';
+	protected $allowedFields        = ['no_rek', 'jumlah_pengiriman', 'jumlah_pengeluaran', 'dikirim_pada', 'type_kas'];
+	protected $useTimestamps        = true;
+	protected $validationRules      = [
+		'no_rek' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'Nomor rekening harus diisi.'
+			]
+		],
+		// 'jumlah_pengiriman' => [
+		// 	'rules' => 'required',
+		// 	'errors' => [
+		// 		'required' => 'Jumlah pengiriman harus diisi.',
+		// 		'integer' => 'Jumlah pengiriman harus berupa angka.'
+		// 	]
+		// ],
+		// 'jumlah_pengeluaran' => [
+		// 	'rules' => 'required',
+		// 	'errors' => [
+		// 		'required' => 'Jumlah pengeluaran harus diisi.',
+		// 		'integer' => 'Jumlah pengeluaran harus berupa angka'
+		// 	]
+		// ],
+		'dikirim_pada' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'Tanggal pengiriman/pengeluaran harus diisi.',
+			]
+		],
+		'type_kas' => [
+			'rules' => 'required',
+			'errors' => [
+				'required' => 'Tipe Kas harus diisi.',
+			]
+		],
+	];
 
-	// Dates
-	protected $useTimestamps        = false;
-	protected $dateFormat           = 'datetime';
-	protected $createdField         = 'created_at';
-	protected $updatedField         = 'updated_at';
-	protected $deletedField         = 'deleted_at';
-
-	// Validation
-	protected $validationRules      = [];
-	protected $validationMessages   = [];
-	protected $skipValidation       = false;
-	protected $cleanValidationRules = true;
-
-	// Callbacks
-	protected $allowCallbacks       = true;
-	protected $beforeInsert         = [];
-	protected $afterInsert          = [];
-	protected $beforeUpdate         = [];
-	protected $afterUpdate          = [];
-	protected $beforeFind           = [];
-	protected $afterFind            = [];
-	protected $beforeDelete         = [];
-	protected $afterDelete          = [];
+	public function total()
+	{
+		$pengiriman = $this->db->query("SELECT sum(jumlah_pengiriman) FROM {$this->table}")->getRow()->{'sum(jumlah_pengiriman)'};
+		$pengeluaran = $this->db->query("SELECT sum(jumlah_pengeluaran) FROM {$this->table}")->getRow()->{'sum(jumlah_pengeluaran)'};
+		return $pengiriman - $pengeluaran;
+	}
 }

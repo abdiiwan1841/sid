@@ -11,6 +11,7 @@ class KasUmum extends BaseController
 		$data = [
 			'title' => 'Kas Umum',
 			'kas_umum' => $this->kasUmum->orderBy('id', 'DESC')->findAll(),
+			'kas' => $this->kasUmum,
 			'penduduk' => $this->kependudukan,
 		];
 		return view('pemerintahan/index', $data);
@@ -30,17 +31,29 @@ class KasUmum extends BaseController
 			'title' => 'Tambah Data Kas Umum',
 			'validation' => $this->validation,
 			'penduduk' => $this->kependudukan->findAll(),
-			'kas_umum' => $this->kasUmum,
+			'data' => $this->kasUmum,
 		];
 		return view('pemerintahan/new', $data);
 	}
 
 	public function create()
 	{
+		$data = $this->request->getPost();
+		if ($data['type_kas'] == 'pengeluaran') {
+			$this->kasUmum->setValidationRules([
+				'jumlah_pengeluaran' => 'required'
+			]);
+			$data['jumlah_pengiriman'] = 0;
+		}
+		if ($data['type_kas'] == 'pengiriman') {
+			$this->kasUmum->setValidationRules([
+				'jumlah_pengiriman' => 'required'
+			]);
+			$data['jumlah_pengeluaran'] = 0;
+		}
 		if (!$this->validate($this->kasUmum->getValidationRules())) {
 			return redirect()->back()->withInput();
 		}
-		$data = $this->request->getPost();
 		$this->kasUmum->save($data);
 		return redirect()->to(route_to('pemerintahan_kas_umum'))->with('berhasil', 'Kas berhasil ditambah!');
 	}
@@ -51,9 +64,7 @@ class KasUmum extends BaseController
 		$data = [
 			'title' => 'Ubah Kas Umum',
 			'validation' => $this->validation,
-			'kas_umum' => $kas_umum,
-			'penduduk' => $this->kependudukan->where('id !=', $kas_umum->penduduk_id ?? 1)->findAll(),
-			'data_penduduk' =>  $this->kependudukan->where('id', $kas_umum->penduduk_id ?? 1)->first(),
+			'data' => $kas_umum,
 		];
 		return view('pemerintahan/edit', $data);
 	}
