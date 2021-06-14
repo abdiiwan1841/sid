@@ -83,7 +83,6 @@
                 <th>Nomor Rekening Penerima/Pengeluaran</th>
                 <th>Jumlah Pengiriman</th>
                 <th>Jumlah Pengeluaran</th>
-                <th>Total Saldo</th>
                 <th>Tanggal pengiriman/pengeluaran</th>
               </tr>
             </thead>
@@ -110,11 +109,20 @@
                   <td><?= esc($data->no_rek); ?></td>
                   <td>Rp. <?= $data->jumlah_pengiriman ? esc($data->jumlah_pengiriman) : 0; ?></td>
                   <td>RP. <?= $data->jumlah_pengeluaran ? esc($data->jumlah_pengeluaran) : 0; ?></td>
-                  <td><?= $kas->total() ?></td>
                   <td><?= ttl($data->dikirim_pada); ?></td>
                 </tr>
               <?php endforeach ?>
             </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="5">
+                  Total saldo :
+                  <span class="float-right">
+                    Rp. <?= $kas->total() ?>
+                  </span>
+                </td>
+              </tr>
+            </tfoot>
           </table>
           <!--end: Datatable-->
         </div>

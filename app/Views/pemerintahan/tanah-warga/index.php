@@ -26,7 +26,7 @@
             <span class="card-icon">
               <i class="flaticon2-favourite text-primary"></i>
             </span>
-            <h3 class="card-label">Data <?= $title; ?></h3>
+            <h3 class="card-label">Data Dusun Desa</h3>
           </div>
           <div class="card-toolbar">
             <!--begin::Dropdown-->
@@ -66,7 +66,7 @@
             </div>
             <!--end::Dropdown-->
             <!--begin::Button-->
-            <a href="<?= route_to('profil_wilayah_data_potensi_new', 1); ?>" class="btn btn-primary font-weight-bolder">
+            <a href="<?= route_to('pemerintahan_tanah_warga_new'); ?>" class="btn btn-primary font-weight-bolder mt-2 mt-md-0">
               <i class="la la-plus"></i>Tambah
             </a>
             <!--end::Button-->
@@ -77,31 +77,41 @@
           <?= $this->include('components/alert'); ?>
           <table class="table table-bordered table-hover table-checkable" id="datatable">
             <thead>
-              <tr style="text-align: center;">
-                <th>data</th>
+              <tr class="text-center">
+                <th>No</th>
                 <th>Aksi</th>
-                <th>data</th>
+                <th>Nama Pemilik</th>
+                <th>Luas Tanah</th>
+                <th>Nomor Sertifikat</th>
+                <th>Tanggal didata</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td style="text-align: center;">data</td>
-                <td>
-                  <div class="d-flex">
-                    <a class="btn btn-sm btn-icon btn-clean" title="Ubah" href="<?= route_to('profil_wilayah_data_potensi_edit', 1); ?>">
-                      <i class="far fa-edit fa-sm"></i>
-                    </a>
-                    <form action="<?= route_to('profil_wilayah_data_potensi_delete', 1); ?>" method="post" class="d-inline">
-                      <input type="hidden" name="_method" value="DELETE">
-                      <?= csrf_field(); ?>
-                      <button type="submit" title="Hapus" onclick="return confirm('yakin dihapus?')" class="btn btn-sm btn-icon btn-clean">
-                        <i class="far fa-trash fa-sm"></i>
-                      </button>
-                    </form>
-                  </div>
-                </td>
-                <td>data</td>
-              </tr>
+              <?php
+              $no = 1;
+              foreach ($tanah_warga as $data) : ?>
+                <tr>
+                  <td class="text-center"><?= $no++; ?></td>
+                  <td>
+                    <div class="d-flex">
+                      <a class="btn btn-sm btn-icon btn-clean" title="Ubah" href="<?= route_to('pemerintahan_tanah_warga_edit', $data->id); ?>">
+                        <i class="far fa-edit fa-sm"></i>
+                      </a>
+                      <form action="<?= route_to('pemerintahan_tanah_warga_delete', $data->id); ?>" method="post" class="d-inline">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <?= csrf_field(); ?>
+                        <button type="submit" title="Hapus" onclick="return confirm('yakin dihapus?')" class="btn btn-sm btn-icon btn-clean">
+                          <i class="far fa-trash fa-sm"></i>
+                        </button>
+                      </form>
+                    </div>
+                  </td>
+                  <td><?= esc($penduduk->getPenduduk($data->penduduk_id)->nama_lengkap); ?></td>
+                  <td><?= esc($data->luas_tanah); ?></td>
+                  <td><?= esc($data->no_sertifikat); ?></td>
+                  <td><?= ttl($data->created_at) ?></td>
+                </tr>
+              <?php endforeach ?>
             </tbody>
           </table>
           <!--end: Datatable-->

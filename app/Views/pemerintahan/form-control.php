@@ -5,11 +5,11 @@
   </div>
   <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
     <label>Jumlah Pengiriman (angka saja)</label>
-    <input type="text" name="jumlah_pengiriman" class="form-control" placeholder="cth: 1.000.000" value="<?= old('jumlah_pengiriman') ?? $data->jumlah_pengiriman; ?>" />
+    <input type="text" name="jumlah_pengiriman" class="form-control" placeholder="cth: 1000000" value="<?= old('jumlah_pengiriman') ?? $data->jumlah_pengiriman; ?>" />
   </div>
   <div class="col-md-6 col-lg-4 mt-3 mt-3 mt-lg-0">
     <label>Jumlah Pengeluaran (angka saja)</label>
-    <input type="text" name="jumlah_pengeluaran" class="form-control" placeholder="cth: 1.000.000" value="<?= old('jumlah_pengeluaran') ?? $data->jumlah_pengeluaran; ?>" />
+    <input type="text" name="jumlah_pengeluaran" class="form-control" placeholder="cth: 1000000" value="<?= old('jumlah_pengeluaran') ?? $data->jumlah_pengeluaran; ?>" />
   </div>
   <div class="col-md-6 col-lg-4 mt-3">
     <label>Tanggal Pengiriman/Pengeluaran</label>

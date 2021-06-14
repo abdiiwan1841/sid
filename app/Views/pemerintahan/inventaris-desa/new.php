@@ -17,15 +17,14 @@
             <span class="card-icon">
               <i class="flaticon2-favourite text-primary"></i>
             </span>
-            <h3 class="card-label">Form <?= $title; ?></h3>
+            <h3 class="card-label text-capitalize">Form tambah data inventaris desa</h3>
           </div>
         </div>
         <div class="card-body">
           <?= $validation->listErrors(); ?>
-          <form class="form" id="kt_form_2" action="<?= route_to('profil_wilayah_data_desa_update', $data->id); ?>" method="POST" autocomplete="off">
-            <input type="hidden" name="_method" value="PUT">
+          <form class="form" id="kt_form_2" action="<?= route_to('pemerintahan_inventaris_desa_create'); ?>" method="POST" autocomplete="off">
             <?= csrf_field(); ?>
-            <?= $this->include('profil-wilayah/data-desa/form-control'); ?>
+            <?= $this->include('pemerintahan/inventaris-desa/form-control'); ?>
             <div class="row">
               <div class="col-lg-12">
                 <button type="submit" class="btn btn-primary font-weight-bold mr-2">Simpan</button>

@@ -321,23 +321,23 @@ $routes->group('pemerintahan', ['namespace' => '\App\Controllers\Pemerintahan', 
 	$routes->put('inventaris-desa/(:num)', 'InventarisDesa::update/$1', ['as' => 'pemerintahan_inventaris_desa_update']);
 	$routes->delete('inventaris-desa/(:num)', 'InventarisDesa::delete/$1', ['as' => 'pemerintahan_inventaris_desa_delete']);
 	// Tanah Warga
-	$routes->get('tahan-warga', 'TanahWarga::index', ['as' => 'pemerintahan_tanah_warga']);
-	$routes->get('tahan-warga/new', 'TanahWarga::new', ['as' => 'pemerintahan_tanah_warga_new']);
-	$routes->get('tahan-warga/(:num)', 'TanahWarga::show/$1', ['as' => 'pemerintahan_tanah_warga_show']);
-	$routes->post('tahan-warga', 'TanahWarga::create', ['as' => 'pemerintahan_tanah_warga_create']);
-	$routes->get('tahan-warga/(:num)/edit', 'TanahWarga::edit/$1', ['as' => 'pemerintahan_tanah_warga_edit']);
-	$routes->put('tahan-warga/(:num)', 'TanahWarga::update/$1', ['as' => 'pemerintahan_tanah_warga_update']);
-	$routes->delete('tahan-warga/(:num)', 'TanahWarga::delete/$1', ['as' => 'pemerintahan_tanah_warga_delete']);
+	$routes->get('tanah-warga', 'TanahWarga::index', ['as' => 'pemerintahan_tanah_warga']);
+	$routes->get('tanah-warga/new', 'TanahWarga::new', ['as' => 'pemerintahan_tanah_warga_new']);
+	$routes->get('tanah-warga/(:num)', 'TanahWarga::show/$1', ['as' => 'pemerintahan_tanah_warga_show']);
+	$routes->post('tanah-warga', 'TanahWarga::create', ['as' => 'pemerintahan_tanah_warga_create']);
+	$routes->get('tanah-warga/(:num)/edit', 'TanahWarga::edit/$1', ['as' => 'pemerintahan_tanah_warga_edit']);
+	$routes->put('tanah-warga/(:num)', 'TanahWarga::update/$1', ['as' => 'pemerintahan_tanah_warga_update']);
+	$routes->delete('tanah-warga/(:num)', 'TanahWarga::delete/$1', ['as' => 'pemerintahan_tanah_warga_delete']);
 });
 
 // DATA APBD DESA
-$routes->group('data-apbd', ['namespace' => '\App\Controllers\Administrasi', 'filter' => 'role:supervisor,admin'], function ($routes) {
-	$routes->get('', 'Pendatapan::index', ['as' => 'data_apbd_pendapatan']);
-	$routes->get('new', 'Pendatapan::new', ['as' => 'data_apbd_pendapatan_new']);
-	$routes->post('', 'Pendatapan::create', ['as' => 'data_apbd_pendapatan_create']);
-	$routes->get('(:num)/edit', 'Pendatapan::edit/$1', ['as' => 'data_apbd_pendapatan_edit']);
-	$routes->put('(:num)', 'Pendatapan::update/$1', ['as' => 'data_apbd_pendapatan_update']);
-	$routes->delete('(:num)', 'Pendatapan::delete/$1', ['as' => 'data_apbd_pendapatan_delete']);
+$routes->group('data-apbd', ['namespace' => '\App\Controllers\DataApbd', 'filter' => 'role:supervisor,admin'], function ($routes) {
+	$routes->get('', 'Pendapatan::index', ['as' => 'data_apbd_pendapatan']);
+	$routes->get('new', 'Pendapatan::new', ['as' => 'data_apbd_pendapatan_new']);
+	$routes->post('', 'Pendapatan::create', ['as' => 'data_apbd_pendapatan_create']);
+	$routes->get('(:num)/edit', 'Pendapatan::edit/$1', ['as' => 'data_apbd_pendapatan_edit']);
+	$routes->put('(:num)', 'Pendapatan::update/$1', ['as' => 'data_apbd_pendapatan_update']);
+	$routes->delete('(:num)', 'Pendapatan::delete/$1', ['as' => 'data_apbd_pendapatan_delete']);
 	// Data Anggaran Belanja
 	$routes->get('belanja', 'Belanja::index', ['as' => 'data_apbd_belanja']);
 	$routes->get('belanja/new', 'Belanja::new', ['as' => 'data_apbd_belanja_new']);
