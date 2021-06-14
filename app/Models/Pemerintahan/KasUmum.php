@@ -8,7 +8,7 @@ class KasUmum extends Model
 {
 	protected $table                = 'kas_umum';
 	protected $returnType           = 'object';
-	protected $allowedFields        = ['no_rek', 'jumlah_pengiriman', 'jumlah_pengeluaran', 'dikirim_pada', 'type_kas'];
+	protected $allowedFields        = ['no_rek', 'jumlah_pengiriman', 'jumlah_pengeluaran', 'dikirim_pada', 'type_kas', 'total_saldo'];
 	protected $useTimestamps        = true;
 	protected $validationRules      = [
 		'no_rek' => [
@@ -47,8 +47,12 @@ class KasUmum extends Model
 
 	public function total()
 	{
-		$pengiriman = $this->db->query("SELECT sum(jumlah_pengiriman) FROM {$this->table}")->getRow()->{'sum(jumlah_pengiriman)'};
-		$pengeluaran = $this->db->query("SELECT sum(jumlah_pengeluaran) FROM {$this->table}")->getRow()->{'sum(jumlah_pengeluaran)'};
-		return $pengiriman - $pengeluaran;
+	  
+		$jumlah_pengiriman = $this->db->query("SELECT sum(jumlah_pengiriman) FROM {$this->table}")->getRow()->{'sum(jumlah_pengiriman)'};
+		$jumlah_pengeluaran = $this->db->query("SELECT sum(jumlah_pengeluaran) FROM {$this->table}")->getRow()->{'sum(jumlah_pengeluaran)'};
+		
+		$total = $jumlah_pengiriman - $jumlah_pengeluaran;
+		
+		return $total;
 	}
 }

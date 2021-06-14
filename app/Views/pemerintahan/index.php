@@ -110,7 +110,7 @@
                   <td><?= esc($data->no_rek); ?></td>
                   <td>Rp. <?= $data->jumlah_pengiriman ? esc($data->jumlah_pengiriman) : 0; ?></td>
                   <td>RP. <?= $data->jumlah_pengeluaran ? esc($data->jumlah_pengeluaran) : 0; ?></td>
-                  <td><?= $kas->total(); ?></td>
+                  <td><?= $kas->total() ?></td>
                   <td><?= ttl($data->dikirim_pada); ?></td>
                 </tr>
               <?php endforeach ?>

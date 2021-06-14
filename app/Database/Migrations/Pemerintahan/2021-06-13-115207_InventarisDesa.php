@@ -4,7 +4,7 @@ namespace App\Database\Migrations\Pemerintahan;
 
 use CodeIgniter\Database\Migration;
 
-class KasUmum extends Migration
+class InventarisDesa extends Migration
 {
 	public function up()
 	{
@@ -15,49 +15,38 @@ class KasUmum extends Migration
 				'unsigned'       => true,
 				'auto_increment' => true,
 			],
-			'no_rek' => [
-				'type'           => 'INT',
-				'constraint'     => 255,
-				'default'					=> NULL
-			],
-			'jumlah_pengiriman' => [
+			'jenis_barang' => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 255,
 				'default'					=> NULL
 			],
-			'jumlah_pengeluaran' => [
+			'kode_barang' => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 255,
 				'default'					=> NULL
 			],
-			'dikirim_pada' => [
+			'identitas_barang' => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 255,
 				'default'					=> NULL
 			],
-			'type_kas' => [
+			'asal_barang' => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 255,
 				'default'					=> NULL
 			],
-			'total_saldo' => [
-				'type'           => 'INT',
+			'tanggal_perolehan' => [
+				'type'           => 'VARCHAR',
 				'constraint'     => 255,
 				'default'					=> NULL
-			],
-			'created_at'       => [
-				'type'       => 'DATETIME',
-			],
-			'updated_at'       => [
-				'type'       => 'DATETIME',
 			],
 		]);
 		$this->forge->addKey('id', true);
-		$this->forge->createTable('kas_umum');
+		$this->forge->createTable('inventaris_desa');
 	}
 
 	public function down()
 	{
-		$this->forge->dropTable('kas_umum');
+		$this->forge->dropTable('inventaris_desa');
 	}
 }

@@ -50,6 +50,7 @@ class KasUmum extends BaseController
 				'jumlah_pengiriman' => 'required'
 			]);
 			$data['jumlah_pengeluaran'] = 0;
+			$data['total_saldo'] = $data['jumlah_pengiriman'];
 		}
 		if (!$this->validate($this->kasUmum->getValidationRules())) {
 			return redirect()->back()->withInput();
@@ -71,10 +72,23 @@ class KasUmum extends BaseController
 
 	public function update($id = null)
 	{
+	 	$data = $this->request->getPost();
+		if ($data['type_kas'] == 'pengeluaran') {
+			$this->kasUmum->setValidationRules([
+				'jumlah_pengeluaran' => 'required'
+			]);
+			$data['jumlah_pengiriman'] = 0;
+		}
+		if ($data['type_kas'] == 'pengiriman') {
+			$this->kasUmum->setValidationRules([
+				'jumlah_pengiriman' => 'required'
+			]);
+			$data['jumlah_pengeluaran'] = 0;
+		  $data['total_saldo'] = $data['jumlah_pengiriman'];
+		} 
 		if (!$this->validate($this->kasUmum->getValidationRules())) {
 			return redirect()->back()->withInput();
 		}
-		$data = $this->request->getPost();
 		$this->kasUmum->save($data);
 		return redirect()->to(route_to('pemerintahan_kas_umum'))->with('berhasil', 'Kas berhasil diubah!');
 	}
