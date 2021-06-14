@@ -121,6 +121,7 @@
                     Rp. <?= $kas->total() ?>
                   </span>
                 </td>
+                <td></td>
               </tr>
             </tfoot>
           </table>
