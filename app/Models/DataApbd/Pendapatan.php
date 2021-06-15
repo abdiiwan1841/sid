@@ -6,37 +6,27 @@ use CodeIgniter\Model;
 
 class Pendapatan extends Model
 {
-	protected $DBGroup              = 'default';
-	protected $table                = 'pendapatans';
-	protected $primaryKey           = 'id';
-	protected $useAutoIncrement     = true;
-	protected $insertID             = 0;
-	protected $returnType           = 'array';
-	protected $useSoftDelete        = false;
-	protected $protectFields        = true;
-	protected $allowedFields        = [];
+	protected $table                = 'anggaran_pendapatan';
+	protected $returnType           = 'object';
+	protected $allowedFields        = [
+		'pajak_daerah', 'retribusi_daerah', 'hasil_pengelolaan_kekayaan', 'lainnya_pad_sah', 'dana_hasil_pajak', 'dana_alokasi_umum', 'dana_alokasi_khusus', 'hibah', 'dana_darurat', 'dana_hasil_pajak_dari_provinsi', 'dana_penyesuaian', 'bantuan_keuangan', 'lain_lain'
+	];
+	protected $useTimestamps        = true;
 
-	// Dates
-	protected $useTimestamps        = false;
-	protected $dateFormat           = 'datetime';
-	protected $createdField         = 'created_at';
-	protected $updatedField         = 'updated_at';
-	protected $deletedField         = 'deleted_at';
 
-	// Validation
-	protected $validationRules      = [];
-	protected $validationMessages   = [];
-	protected $skipValidation       = false;
-	protected $cleanValidationRules = true;
 
-	// Callbacks
-	protected $allowCallbacks       = true;
-	protected $beforeInsert         = [];
-	protected $afterInsert          = [];
-	protected $beforeUpdate         = [];
-	protected $afterUpdate          = [];
-	protected $beforeFind           = [];
-	protected $afterFind            = [];
-	protected $beforeDelete         = [];
-	protected $afterDelete          = [];
+	public function totalPad()
+	{
+		return $this->db->query("SELECT sum(pajak_daerah+retribusi_daerah+hasil_pengelolaan_kekayaan+lainnya_pad_sah) FROM {$this->table}")->getRow()->{'sum(pajak_daerah+retribusi_daerah+hasil_pengelolaan_kekayaan+lainnya_pad_sah)'};
+	}
+
+	public function totalDaper()
+	{
+		return $this->db->query("SELECT sum(dana_hasil_pajak+dana_alokasi_umum+dana_alokasi_khusus) FROM {$this->table}")->getRow()->{'sum(dana_hasil_pajak+dana_alokasi_umum+dana_alokasi_khusus)'};
+	}
+
+	public function totalLainnya()
+	{
+		return $this->db->query("SELECT sum(hibah+dana_darurat+dana_hasil_pajak_dari_provinsi+dana_penyesuaian+bantuan_keuangan+lain_lain) FROM {$this->table}")->getRow()->{'sum(hibah+dana_darurat+dana_hasil_pajak_dari_provinsi+dana_penyesuaian+bantuan_keuangan+lain_lain)'};
+	}
 }
