@@ -81,7 +81,7 @@
                       </span>
                     </li>
                     <li class="menu-item<?= (base_url($sm->url) == current_url()) ? ' menu-item-active' : '' ?>" aria-haspopup="true">
-                      <a href="<?= esc($sm->url); ?>" class="menu-link">
+                      <a href="/<?= esc($sm->url); ?>" class="menu-link">
                         <i class="menu-bullet menu-bullet-line">
                           <span></span>
                         </i>

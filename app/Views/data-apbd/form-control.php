@@ -1,4 +1,8 @@
 <div class="form-group row">
+  <div class="col-12">
+    <h3 class="text-center">PAD</h3>
+    <hr class="my-3">
+  </div>
   <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
     <label>Pajak daerah</label>
     <input name="pajak_daerah" class="form-control" value="<?= old('pajak_daerah') ?? $data->pajak_daerah; ?>">
@@ -15,6 +19,10 @@
     <label>Lain-lain PAD yang sah</label>
     <input name="lainnya_pad_sah" class="form-control" value="<?= old('lainnya_pad_sah') ?? $data->lainnya_pad_sah; ?>">
   </div>
+  <div class="col-12 mt-5">
+    <h3 class="text-center">Daper</h3>
+    <hr class="my-3">
+  </div>
   <div class="col-md-6 col-lg-4 mt-3">
     <label>Dana bagi hasil pajak/bagi hasil bukan pajak</label>
     <input name="dana_hasil_pajak" class="form-control" value="<?= old('dana_hasil_pajak') ?? $data->dana_hasil_pajak; ?>">
@@ -26,6 +34,10 @@
   <div class="col-md-6 col-lg-4 mt-3">
     <label>Dana alokasi khusus</label>
     <input name="dana_alokasi_khusus" class="form-control" value="<?= old('dana_alokasi_khusus') ?? $data->dana_alokasi_khusus; ?>">
+  </div>
+  <div class="col-12 mt-5">
+    <h3 class="text-center">Lain-lain pendapatan daerah yang sah</h3>
+    <hr class="my-3">
   </div>
   <div class="col-md-6 col-lg-4 mt-3">
     <label>Hibah</label>

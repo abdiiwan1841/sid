@@ -24,7 +24,7 @@
           <?= $validation->listErrors(); ?>
           <form class="form" id="kt_form_2" action="<?= route_to('laporan_realisasi_pendapatan_create'); ?>" method="POST" autocomplete="off">
             <?= csrf_field(); ?>
-            <?= $this->include('data-apbd/laporan-realisasi/form-control'); ?>
+            <?= $this->include('data-apbd/form-control'); ?>
             <div class="row">
               <div class="col-lg-12">
                 <button type="submit" class="btn btn-primary font-weight-bold mr-2">Simpan</button>

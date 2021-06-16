@@ -6,37 +6,11 @@ use CodeIgniter\Model;
 
 class Pembiayaan extends Model
 {
-	protected $DBGroup              = 'default';
-	protected $table                = 'pembiayaans';
-	protected $primaryKey           = 'id';
-	protected $useAutoIncrement     = true;
-	protected $insertID             = 0;
-	protected $returnType           = 'array';
-	protected $useSoftDelete        = false;
-	protected $protectFields        = true;
-	protected $allowedFields        = [];
-
-	// Dates
-	protected $useTimestamps        = false;
-	protected $dateFormat           = 'datetime';
-	protected $createdField         = 'created_at';
-	protected $updatedField         = 'updated_at';
-	protected $deletedField         = 'deleted_at';
-
-	// Validation
+	protected $table                = 'laporan_realisasi_pembiayaan';
+	protected $returnType           = 'object';
+	protected $allowedFields        = [
+		'silpa_ta', 'pencairan_dana_cadangan', 'hasil_penjualan_kekayaan_daerah', 'penerimaan_pinjman_daerah', 'penerimaan_kembali_pemberian_pinjaman', 'penerimaan_piutang_daerah', 'penerimaan_kembali_investasi_dana_bergulir', 'pembentukan_dana_cadangan', 'penyertaan_modal', 'pembayaran_pokok_utang', 'pemberian_pinjaman_daerah', 'pembayaran_kegiatan_lanjutan', 'pengeluaran_perhitungan_pihak_ketiga', 'lainnya'
+	];
+	protected $useTimestamps        = true;
 	protected $validationRules      = [];
-	protected $validationMessages   = [];
-	protected $skipValidation       = false;
-	protected $cleanValidationRules = true;
-
-	// Callbacks
-	protected $allowCallbacks       = true;
-	protected $beforeInsert         = [];
-	protected $afterInsert          = [];
-	protected $beforeUpdate         = [];
-	protected $afterUpdate          = [];
-	protected $beforeFind           = [];
-	protected $afterFind            = [];
-	protected $beforeDelete         = [];
-	protected $afterDelete          = [];
 }

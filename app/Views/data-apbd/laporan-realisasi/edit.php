@@ -17,7 +17,7 @@
             <span class="card-icon">
               <i class="flaticon2-favourite text-primary"></i>
             </span>
-            <h3 class="card-label">Ubah <?= $title; ?></h3>
+            <h3 class="card-label"><?= $title; ?></h3>
           </div>
         </div>
         <div class="card-body">
@@ -26,7 +26,7 @@
             <input type="hidden" name="_method" value="PUT">
             <input type="hidden" name="id" value="<?= $data->id; ?>">
             <?= csrf_field(); ?>
-            <?= $this->include('data-apbd/laporan-relisasi/form-control'); ?>
+            <?= $this->include('data-apbd/form-control'); ?>
             <div class="row">
               <div class="col-lg-12">
                 <button type="submit" class="btn btn-primary font-weight-bold mr-2">Simpan</button>
