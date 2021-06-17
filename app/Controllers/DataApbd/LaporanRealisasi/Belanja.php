@@ -9,62 +9,59 @@ class Belanja extends BaseController
 	public function index()
 	{
 		$data = [
-			'title' => 'Laporan Realisasi - Belanja'
+			'title' => 'laporan realisasi Pendapatan',
+			'pendapatan' => $this->laporanRealisasiPendapatan->orderBy('id', 'DESC')->findAll(),
+			'pendapatan_model' => $this->pendapatan,
 		];
-		return view('data-apbd/laporan-realisasi/belanja/index', $data);
+		return view('data-apbd/laporan-realisasi/index', $data);
 	}
-	
+
 	public function show($id = null)
 	{
 		$data = [
-			'title' => 'Laporan Realisasi - Belanja'
+			'title' => 'pendapatan'
 		];
-		return view('data-apbd/laporan-realisasi/belanja/show', $data);
+		return view('data-apbd/laporan-realisasi/show', $data);
 	}
 
 	public function new()
 	{
 		$data = [
-			'title' => 'Tambah Laporan Realisasi - Belanja',
+			'title' => 'Tambah Data laporan realisasi pendapatan',
 			'validation' => $this->validation,
+			'data' => $this->laporanRealisasiPendapatan,
 		];
-		return view('data-apbd/laporan-realisasi/belanja/new', $data);
+		return view('data-apbd/laporan-realisasi/new', $data);
 	}
 
 	public function create()
 	{
-		// if (!$this->validate($this->laporanRealisasiBelanja->getValidationRules())) {
-		// 	return redirect()->to(route_to('laporan_realisasi_belanja'))->withInput();
-		// }
-		// $data = $this->request->getPost();
-		// $this->laporanRealisasiBelanja->save($data);
-		return redirect()->to(route_to('laporan_realisasi_belanja'))->with('berhasil', 'Laporan Realisasi - Belanja berhasil ditambah!');
+		$data = $this->request->getPost();
+		$this->laporanRealisasiPendapatan->save($data);
+		return redirect()->to(route_to('laporan_realisasi_pendapatan'))->with('berhasil', 'Data berhasil ditambah!');
 	}
 
 	public function edit($id = null)
 	{
+		$pendapatan = $this->laporanRealisasiPendapatan->find($id);
 		$data = [
-			'title' => 'Ubah Laporan Realisasi - Belanja',
+			'title' => 'Ubah data laporan realisasi pendapatan',
 			'validation' => $this->validation,
-			// 'dokumen' => $this->laporanRealisasiBelanja->find($id),
+			'data' => $pendapatan,
 		];
-		return view('data-apbd/laporan-realisasi/belanja/edit', $data);
+		return view('data-apbd/laporan-realisasi/edit', $data);
 	}
 
 	public function update($id = null)
 	{
-		// if (!$this->validate($this->laporanRealisasiBelanja->getValidationRules())) {
-		// 	return redirect()->to(route_to('laporan_realisasi_belanja',1))->withInput();
-		// }
-		// $data = $this->request->getPost();
-		// $this->laporanRealisasiBelanja->save($data);
-		return redirect()->to(route_to('laporan_realisasi_belanja'))->with('berhasil', 'Laporan Realisasi - Belanja berhasil diubah!');
+		$data = $this->request->getPost();
+		$this->laporanRealisasiPendapatan->save($data);
+		return redirect()->to(route_to('laporan_realisasi_pendapatan'))->with('berhasil', 'Data berhasil diubah!');
 	}
 
 	public function delete($id = null)
 	{
-		// $this->laporanRealisasiBelanja->delete($id);
-		return redirect()->to(route_to('laporan_realisasi_belanja'))->with('berhasil', 'Laporan Realisasi - Belanja berhasil dihapus!');
+		$this->laporanRealisasiPendapatan->delete($id);
+		return redirect()->to(route_to('laporan_realisasi_pendapatan'))->with('berhasil', 'Data berhasil dihapus!');
 	}
 }
-

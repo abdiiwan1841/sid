@@ -9,15 +9,17 @@ class Pembiayaan extends BaseController
 	public function index()
 	{
 		$data = [
-			'title' => 'Laporan Realisasi - Belanja'
+			'title' => 'Laporan Realisasi Pembiayaan',
+			'pembiayaan' => $this->laporanRealisasiPembiayaan->orderBy('id', 'DESC')->findAll(),
+			'pembiayaan_model' => $this->laporanRealisasiPembiayaan,
 		];
 		return view('data-apbd/laporan-realisasi/pembiayaan/index', $data);
 	}
-	
+
 	public function show($id = null)
 	{
 		$data = [
-			'title' => 'Laporan Realisasi - Belanja'
+			'title' => 'pembiayaan'
 		];
 		return view('data-apbd/laporan-realisasi/pembiayaan/show', $data);
 	}
@@ -25,45 +27,42 @@ class Pembiayaan extends BaseController
 	public function new()
 	{
 		$data = [
-			'title' => 'Tambah Laporan Realisasi - Belanja',
+			'title' => 'Tambah Data Laporan Realisasi Pembiayaan',
 			'validation' => $this->validation,
+			'data' => $this->laporanRealisasiPembiayaan,
 		];
 		return view('data-apbd/laporan-realisasi/pembiayaan/new', $data);
 	}
 
 	public function create()
 	{
-		// if (!$this->validate($this->laporanRealisasiPembiayaan->getValidationRules())) {
-		// 	return redirect()->to(route_to('laporan_realisasi_pembiayaan'))->withInput();
-		// }
-		// $data = $this->request->getPost();
-		// $this->laporanRealisasiPembiayaan->save($data);
-		return redirect()->to(route_to('laporan_realisasi_pembiayaan'))->with('berhasil', 'Laporan Realisasi - Belanja berhasil ditambah!');
+		$data = $this->request->getPost();
+		$this->laporanRealisasiPembiayaan->save($data);
+		return redirect()->to(route_to('data_apbd_pembiayaan'))->with('berhasil', 'Data berhasil ditambah!');
 	}
 
 	public function edit($id = null)
 	{
+		$pembiayaan = $this->laporanRealisasiPembiayaan->find($id);
 		$data = [
-			'title' => 'Ubah Laporan Realisasi - Belanja',
+			'title' => 'Ubah data Laporan Realisasi Pembiayaan',
 			'validation' => $this->validation,
-			// 'dokumen' => $this->laporanRealisasiPembiayaan->find($id),
+			'data' => $pembiayaan,
 		];
 		return view('data-apbd/laporan-realisasi/pembiayaan/edit', $data);
 	}
 
 	public function update($id = null)
 	{
-		// if (!$this->validate($this->laporanRealisasiPembiayaan->getValidationRules())) {
-		// 	return redirect()->to(route_to('laporan_realisasi_pembiayaan',1))->withInput();
-		// }
-		// $data = $this->request->getPost();
-		// $this->laporanRealisasiPembiayaan->save($data);
-		return redirect()->to(route_to('laporan_realisasi_pembiayaan'))->with('berhasil', 'Laporan Realisasi - Belanja berhasil diubah!');
+
+		$data = $this->request->getPost();
+		$this->laporanRealisasiPembiayaan->save($data);
+		return redirect()->to(route_to('data_apbd_pembiayaan'))->with('berhasil', 'Data berhasil diubah!');
 	}
 
 	public function delete($id = null)
 	{
-		// $this->laporanRealisasiPembiayaan->delete($id);
-		return redirect()->to(route_to('laporan_realisasi_pembiayaan'))->with('berhasil', 'Laporan Realisasi - Pembiayaan berhasil dihapus!');
+		$this->laporanRealisasiPembiayaan->delete($id);
+		return redirect()->to(route_to('data_apbd_pembiayaan'))->with('berhasil', 'Data berhasil dihapus!');
 	}
 }
