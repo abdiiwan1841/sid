@@ -30,7 +30,7 @@ class Pembiayaan extends Migration
 				'constraint'     => 255,
 				'default'					=> 0
 			],
-			'penerimaan_pinjman_daerah' => [
+			'penerimaan_pinjaman_daerah' => [
 				'type'           => 'VARCHAR',
 				'constraint'     => 255,
 				'default'					=> 0
