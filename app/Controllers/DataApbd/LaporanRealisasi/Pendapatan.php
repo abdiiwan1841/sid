@@ -9,9 +9,9 @@ class Pendapatan extends BaseController
 	public function index()
 	{
 		$data = [
-			'title' => 'laporan realisasi Pendapatan',
+			'title' => 'Laporan Realisasi Pendapatan',
 			'pendapatan' => $this->laporanRealisasiPendapatan->orderBy('id', 'DESC')->findAll(),
-			'pendapatan_model' => $this->pendapatan,
+			'pendapatan_model' => $this->laporanRealisasiPendapatan,
 		];
 		return view('data-apbd/laporan-realisasi/index', $data);
 	}
@@ -27,7 +27,7 @@ class Pendapatan extends BaseController
 	public function new()
 	{
 		$data = [
-			'title' => 'Tambah Data laporan realisasi pendapatan',
+			'title' => 'Tambah Data Laporan Realisasi pendapatan',
 			'validation' => $this->validation,
 			'data' => $this->laporanRealisasiPendapatan,
 		];
@@ -45,7 +45,7 @@ class Pendapatan extends BaseController
 	{
 		$pendapatan = $this->laporanRealisasiPendapatan->find($id);
 		$data = [
-			'title' => 'Ubah data laporan realisasi pendapatan',
+			'title' => 'Ubah data Laporan Realisasi pendapatan',
 			'validation' => $this->validation,
 			'data' => $pendapatan,
 		];

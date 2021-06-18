@@ -66,7 +66,7 @@
             </div>
             <!--end::Dropdown-->
             <!--begin::Button-->
-            <a href="<?= route_to('data_apbd_belanja_new'); ?>" class="btn btn-primary font-weight-bolder mt-2 mt-md-0">
+            <a href="<?= route_to('laporan_realisasi_belanja_new'); ?>" class="btn btn-primary font-weight-bolder mt-2 mt-md-0">
               <i class="la la-plus"></i>Tambah
             </a>
             <!--end::Button-->
@@ -102,10 +102,10 @@
                   <td style="text-align: center;"><?= $no++; ?></td>
                   <td>
                     <div class="d-flex">
-                      <a class="btn btn-sm btn-icon btn-clean" title="Ubah" href="<?= route_to('data_apbd_belanja_edit', $data->id); ?>">
+                      <a class="btn btn-sm btn-icon btn-clean" title="Ubah" href="<?= route_to('laporan_realisasi_belanja_edit', $data->id); ?>">
                         <i class="far fa-edit fa-sm"></i>
                       </a>
-                      <form action="<?= route_to('data_apbd_belanja_delete', $data->id); ?>" method="post" class="d-inline">
+                      <form action="<?= route_to('laporan_realisasi_belanja_delete', $data->id); ?>" method="post" class="d-inline">
                         <input type="hidden" name="_method" value="DELETE">
                         <?= csrf_field(); ?>
                         <button type="submit" title="Hapus" onclick="return confirm('yakin dihapus?')" class="btn btn-sm btn-icon btn-clean">

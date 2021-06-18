@@ -9,15 +9,17 @@ class Belanja extends BaseController
 	public function index()
 	{
 		$data = [
-			'title' => 'Data Anggaran - Belanja'
+			'title' => 'Anggaran Belanja',
+			'belanja' => $this->belanja->orderBy('id', 'DESC')->findAll(),
+			'belanja_model' => $this->belanja,
 		];
 		return view('data-apbd/belanja/index', $data);
 	}
-	
+
 	public function show($id = null)
 	{
 		$data = [
-			'title' => 'Data Anggaran - Belanja'
+			'title' => 'belanja'
 		];
 		return view('data-apbd/belanja/show', $data);
 	}
@@ -25,46 +27,41 @@ class Belanja extends BaseController
 	public function new()
 	{
 		$data = [
-			'title' => 'Tambah Data Anggaran - Belanja',
+			'title' => 'Tambah Data Anggaran Belanja',
 			'validation' => $this->validation,
+			'data' => $this->belanja,
 		];
 		return view('data-apbd/belanja/new', $data);
 	}
 
 	public function create()
 	{
-		// if (!$this->validate($this->belanja->getValidationRules())) {
-		// 	return redirect()->to(route_to('data_apbd_belanja'))->withInput();
-		// }
-		// $data = $this->request->getPost();
-		// $this->belanja->save($data);
-		return redirect()->to(route_to('data_apbd_belanja'))->with('berhasil', 'Data Anggaran - Belanja berhasil ditambah!');
+		$data = $this->request->getPost();
+		$this->belanja->save($data);
+		return redirect()->to(route_to('data_apbd_belanja'))->with('berhasil', 'Data berhasil ditambah!');
 	}
 
 	public function edit($id = null)
 	{
+		$belanja = $this->belanja->find($id);
 		$data = [
-			'title' => 'Ubah Data Anggaran - Belanja',
+			'title' => 'Ubah data Anggaran Belanja',
 			'validation' => $this->validation,
-			// 'dokumen' => $this->belanja->find($id),
+			'data' => $belanja,
 		];
 		return view('data-apbd/belanja/edit', $data);
 	}
 
 	public function update($id = null)
 	{
-		// if (!$this->validate($this->belanja->getValidationRules())) {
-		// 	return redirect()->to(route_to('data_apbd_belanja',1))->withInput();
-		// }
-		// $data = $this->request->getPost();
-		// $this->belanja->save($data);
-		return redirect()->to(route_to('data_apbd_belanja'))->with('berhasil', 'Data Anggaran - Belanja berhasil diubah!');
+		$data = $this->request->getPost();
+		$this->belanja->save($data);
+		return redirect()->to(route_to('data_apbd_belanja'))->with('berhasil', 'Data berhasil diubah!');
 	}
 
 	public function delete($id = null)
 	{
-		// $this->belanja->delete($id);
-		return redirect()->to(route_to('data_apbd_belanja'))->with('berhasil', 'Data Anggaran - Belanja berhasil dihapus!');
+		$this->belanja->delete($id);
+		return redirect()->to(route_to('data_apbd_belanja'))->with('berhasil', 'Data berhasil dihapus!');
 	}
 }
-
