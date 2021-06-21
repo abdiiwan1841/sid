@@ -8,10 +8,16 @@ class CommandController extends BaseController
 {
 	public function index()
 	{
-		echo command('migrate');
+		$this->db->table('user_sub_menu')->whereIn('title', [
+			'Inventaris',
+			'Statistik Sarana & Prasarana',
+			'Statistik Lahan',
+			'Statistik Pendidikan',
+		])->update(['is_active' => 0]);
+		return command('migrate');
 	}
 	public function rollback()
 	{
-		echo command('migrate:rollback');
+		return command('migrate:rollback');
 	}
 }

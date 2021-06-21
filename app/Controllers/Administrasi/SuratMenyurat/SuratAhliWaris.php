@@ -13,7 +13,7 @@ class SuratAhliWaris extends BaseController
 		];
 		return view('administrasi/surat-menyurat/surat-ahli-waris/index', $data);
 	}
-	
+
 	public function show($id = null)
 	{
 		$data = [
@@ -33,11 +33,11 @@ class SuratAhliWaris extends BaseController
 
 	public function create()
 	{
-		// if (!$this->validate($this->suratAhliWaris->getValidationRules())) {
-		// 	return redirect()->to(route_to('surat_elektronik_surat_ahli_waris'))->withInput();
-		// }
-		// $data = $this->request->getPost();
-		// $this->suratAhliWaris->save($data);
+		if (!$this->validate($this->suratAhliWaris->getValidationRules())) {
+			return redirect()->to(route_to('surat_elektronik_surat_ahli_waris'))->withInput();
+		}
+		$data = $this->request->getPost();
+		$this->suratAhliWaris->save($data);
 		return redirect()->to(route_to('surat_elektronik_surat_ahli_waris'))->with('berhasil', 'Surat Ahli Waris berhasil ditambah!');
 	}
 
@@ -53,18 +53,17 @@ class SuratAhliWaris extends BaseController
 
 	public function update($id = null)
 	{
-		// if (!$this->validate($this->suratAhliWaris->getValidationRules())) {
-		// 	return redirect()->to(route_to('surat_elektronik_surat_ahli_waris',1))->withInput();
-		// }
-		// $data = $this->request->getPost();
-		// $this->suratAhliWaris->save($data);
+		if (!$this->validate($this->suratAhliWaris->getValidationRules())) {
+			return redirect()->to(route_to('surat_elektronik_surat_ahli_waris', 1))->withInput();
+		}
+		$data = $this->request->getPost();
+		$this->suratAhliWaris->save($data);
 		return redirect()->to(route_to('surat_elektronik_surat_ahli_waris'))->with('berhasil', 'Surat Ahli Waris berhasil diubah!');
 	}
 
 	public function delete($id = null)
 	{
-		// $this->suratAhliWaris->delete($id);
+		$this->suratAhliWaris->delete($id);
 		return redirect()->to(route_to('surat_elektronik_surat_ahli_waris'))->with('berhasil', 'Surat ahli Waris berhasil dihapus!');
 	}
 }
-
